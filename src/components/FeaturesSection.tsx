@@ -5,6 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import StarBorder from "@/components/reactbits/StarBorder";
 import GradualBlur from "@/components/reactbits/GradualBlur";
 import ScrollStack, { ScrollStackItem } from "@/components/reactbits/ScrollStack";
+import { useAnimeInView } from "@/hooks/useAnimeInView";
 
 const features = [
   {
@@ -35,6 +36,7 @@ const features = [
 
 const FeaturesSection = () => {
   const { ref, isInView } = useScrollAnimation(0.1);
+  const featureListRef = useAnimeInView<HTMLDivElement>({ delayStep: 85, translateY: 16 });
 
   return (
     <section id="features" className="py-24 bg-secondary relative overflow-hidden">
@@ -64,10 +66,10 @@ const FeaturesSection = () => {
           </p>
         </motion.div>
 
-        <div className="max-w-2xl mx-auto">
+        <div ref={featureListRef} className="max-w-2xl mx-auto">
           <ScrollStack topOffset={100} stagger={16} itemSpacing={48}>
             {features.map((feature) => (
-              <ScrollStackItem key={feature.title}>
+              <ScrollStackItem key={feature.title} className="feature-motion-item" data-anime-item>
                 <StarBorder as="div" color="hsl(350 85% 55%)" speed="6s" thickness={1} className="block w-full rounded-2xl">
                   <div className="liquid-glass p-7 sm:p-8 rounded-2xl group hover:border-primary/30 transition-colors duration-300">
                     <div className="w-14 h-14 rounded-xl bg-accent/80 flex items-center justify-center mb-5 relative">

@@ -1,6 +1,7 @@
 import { Users, Trophy, Star, Headphones } from "@/lib/icons";
 import { motion } from "framer-motion";
 import CountUp from "@/components/reactbits/CountUp";
+import { useAnimeInView } from "@/hooks/useAnimeInView";
 
 const stats = [
   { icon: Users, value: 424865, label: "Happy Gamers", suffix: "+", format: true },
@@ -33,21 +34,21 @@ const AnimatedCounter = ({
 };
 
 const StatsSection = () => {
+  const statsRef = useAnimeInView<HTMLDivElement>({ delayStep: 90, translateY: 20 });
+
   return (
     <section className="py-16 bg-background relative">
       {/* Subtle top separator line */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat) => (
             <motion.div
               key={stat.label}
-              className="text-center group cursor-default"
+              data-anime-item
+              className="stat-hud text-center group cursor-default"
               whileHover={{ scale: 1.05, y: -5 }}
               transition={{ duration: 0.2 }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
             >
               <div className="flex justify-center mb-3">
                 <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300">

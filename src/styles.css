@@ -1180,3 +1180,40 @@
   animation: char-reveal 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: transform, opacity;
 }
+
+/* One-shot Anime.js HUD accents; animation itself only touches transform/opacity. */
+.stat-hud {
+  position: relative;
+  padding-block: 0.75rem;
+}
+
+.stat-hud::after {
+  content: "";
+  position: absolute;
+  inset-inline: 22%;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.55), transparent);
+  transform: scaleX(0.35);
+  opacity: 0.45;
+  transition: transform 240ms ease, opacity 240ms ease;
+}
+
+.stat-hud:hover::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+[data-hero-brand],
+[data-anime-item] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-hero-brand],
+  [data-anime-item] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

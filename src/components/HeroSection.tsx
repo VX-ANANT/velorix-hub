@@ -1,6 +1,7 @@
 import { Download, ChevronDown, Smartphone, HardDrive } from "@/lib/icons";
 import { AnimatedButton } from "@/components/ui/animated-button";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "@/lib/router-compat";
 import { playDownloadSound } from "@/hooks/useSoundEffect";
 import GradientText from "@/components/reactbits/GradientText";
@@ -8,6 +9,36 @@ import Aurora from "@/components/reactbits/Aurora";
 
 const HeroSection = () => {
   const navigate = useNavigate();
+  const heroContentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const root = heroContentRef.current;
+    if (!root || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let animation: { revert: () => unknown } | undefined;
+    let cancelled = false;
+
+    const playWordmarkReveal = async () => {
+      const targets = root.querySelectorAll<HTMLElement>("[data-hero-brand]");
+      const { animate, stagger } = await import("animejs");
+      if (cancelled) return;
+
+      animation = animate(targets, {
+        opacity: { from: 0 },
+        x: { from: (_target, index) => (index % 2 === 0 ? -12 : 12) },
+        scale: { from: 0.94 },
+        duration: 760,
+        delay: stagger(85),
+        ease: "outExpo",
+      });
+    };
+
+    void playWordmarkReveal();
+    return () => {
+      cancelled = true;
+      animation?.revert();
+    };
+  }, []);
   const handleDownload = () => {
     playDownloadSound();
     navigate("/download");
@@ -66,6 +97,7 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
+          ref={heroContentRef}
           className="mx-auto max-w-4xl text-center"
           variants={containerVariants}
           initial="hidden"
@@ -74,14 +106,14 @@ const HeroSection = () => {
           <motion.div variants={itemVariants} className="mb-8">
             <div className="brand-emblem mx-auto">
               {/* Eyebrow tag */}
-              <div className="brand-eyebrow">
+              <div className="brand-eyebrow" data-hero-brand>
                 <span className="brand-eyebrow-dot" />
                 <span>EST · 2025 — INDIA</span>
                 <span className="brand-eyebrow-dot" />
               </div>
 
               {/* Main wordmark */}
-              <h1 className="brand-wordmark">
+              <h1 className="brand-wordmark" data-hero-brand>
                 <span className="brand-wordmark-bracket left">[</span>
                 <span className="text-gradient text-glow brand-wordmark-text">
                   VeloRix
@@ -90,14 +122,14 @@ const HeroSection = () => {
               </h1>
 
               {/* Decorative divider */}
-              <div className="brand-divider" aria-hidden="true">
+              <div className="brand-divider" aria-hidden="true" data-hero-brand>
                 <span className="brand-divider-line" />
                 <span className="brand-divider-diamond" />
                 <span className="brand-divider-line" />
               </div>
 
               {/* Subtitle */}
-              <h2 className="brand-subtitle">
+              <h2 className="brand-subtitle" data-hero-brand>
                 <GradientText
                   colors={["#ff2d55", "#ffffff", "#ff5577", "#ff2d55"]}
                   animationSpeed={6}
