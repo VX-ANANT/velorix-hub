@@ -69,15 +69,12 @@ const HowItWorksSection = () => {
           </p>
         </motion.div>
 
-        <motion.div
+        <div
           ref={carouselRef}
           data-anime-item
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SimpleCarousel items={carouselItems} autoplay autoplayDelay={4500} />
-        </motion.div>
+        </div>
       </div>
 
       {/* Soft gradual blur fade into next section */}
