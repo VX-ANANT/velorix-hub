@@ -47,8 +47,14 @@ export interface AnimatedButtonProps
 }
 
 const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
-  ({ className, variant, size, asChild = false, children, onClick, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, children, onClick, onPointerMove, onPointerLeave, ...props }, ref) => {
     const [ripples, setRipples] = React.useState<RippleProps[]>([]);
+    const contentRef = React.useRef<HTMLSpanElement>(null);
+    const frameRef = React.useRef<number | null>(null);
+
+    React.useEffect(() => () => {
+      if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
+    }, []);
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       const rect = e.currentTarget.getBoundingClientRect();
@@ -63,6 +69,24 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
       }, 600);
 
       onClick?.(e);
+    };
+
+    const handlePointerMove = (e: React.PointerEvent<HTMLButtonElement>) => {
+      onPointerMove?.(e);
+      if (variant !== "hero" || e.pointerType !== "mouse" || !contentRef.current) return;
+
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 8;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 6;
+      if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
+      frameRef.current = requestAnimationFrame(() => {
+        if (contentRef.current) contentRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      });
+    };
+
+    const handlePointerLeave = (e: React.PointerEvent<HTMLButtonElement>) => {
+      onPointerLeave?.(e);
+      if (contentRef.current) contentRef.current.style.transform = "translate3d(0, 0, 0)";
     };
 
     if (asChild) {
@@ -85,6 +109,8 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
           damping: 17,
         }}
         onClick={handleClick}
+        onPointerMove={handlePointerMove}
+        onPointerLeave={handlePointerLeave}
         {...props}
       >
         {ripples.map((ripple) => (
@@ -99,7 +125,7 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
             }}
           />
         ))}
-        <span className="relative z-10 flex items-center gap-2">{children}</span>
+        <span ref={contentRef} className="relative z-10 flex items-center gap-2 transition-transform duration-150 ease-out motion-reduce:transform-none">{children}</span>
       </motion.button>
     );
   }
