@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import SimpleCarousel from "@/components/reactbits/SimpleCarousel";
 import GradualBlur from "@/components/reactbits/GradualBlur";
+import { useAnimeInView } from "@/hooks/useAnimeInView";
 
 const steps = [
   {
@@ -30,6 +31,7 @@ const steps = [
 
 const HowItWorksSection = () => {
   const { ref, isInView } = useScrollAnimation(0.1);
+  const carouselRef = useAnimeInView<HTMLDivElement>({ delayStep: 0, translateY: 20 });
 
   const carouselItems = steps.map((s, i) => ({
     id: i + 1,
@@ -67,13 +69,12 @@ const HowItWorksSection = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        <div
+          ref={carouselRef}
+          data-anime-item
         >
           <SimpleCarousel items={carouselItems} autoplay autoplayDelay={4500} />
-        </motion.div>
+        </div>
       </div>
 
       {/* Soft gradual blur fade into next section */}

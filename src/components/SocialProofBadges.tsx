@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import googlePlayIcon from "@/assets/logos/google-play.png";
 import appStoreIcon from "@/assets/logos/app-store.png";
 
@@ -48,8 +48,14 @@ const Stars = ({ count, color }: { count: number; color: string }) => (
 
 const SocialProofBadges = () => {
   const trustpilotWidgetRef = useRef<HTMLDivElement | null>(null);
+  const [widgetMounted, setWidgetMounted] = useState(false);
 
   useEffect(() => {
+    setWidgetMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!widgetMounted) return;
     let attempts = 0;
 
     const loadTrustpilotWidget = () => {
@@ -78,7 +84,7 @@ const SocialProofBadges = () => {
     }, 500);
 
     return () => window.clearInterval(interval);
-  }, []);
+  }, [widgetMounted]);
 
   return (
     <section className="py-8">
@@ -125,20 +131,21 @@ const SocialProofBadges = () => {
             <p className="mb-3 text-sm text-muted-foreground">
               Enjoying VeloRix? <span className="text-foreground">Drop a quick review on Trustpilot.</span>
             </p>
-            {/* Trustpilot's script replaces this node's children before React
-                hydrates, so keep it empty + suppress hydration to avoid the
-                mismatch that was re-rendering (and breaking) the page tree. */}
-            <div
-              ref={trustpilotWidgetRef}
-              className="trustpilot-widget"
-              data-locale="en-US"
-              data-template-id="56278e9abfbbba0bdcd568bc"
-              data-businessunit-id="69ab097b6d848fc9d60bf128"
-              data-style-height="52px"
-              data-style-width="100%"
-              data-token="a7c54dba-c0d0-4d6f-8444-56d348f63941"
-              suppressHydrationWarning
-            />
+            {/* Mount after hydration so Trustpilot cannot mutate the SSR tree early. */}
+            {widgetMounted ? (
+              <div
+                ref={trustpilotWidgetRef}
+                className="trustpilot-widget"
+                data-locale="en-US"
+                data-template-id="56278e9abfbbba0bdcd568bc"
+                data-businessunit-id="69ab097b6d848fc9d60bf128"
+                data-style-height="52px"
+                data-style-width="100%"
+                data-token="a7c54dba-c0d0-4d6f-8444-56d348f63941"
+              />
+            ) : (
+              <div className="h-[52px]" aria-hidden="true" />
+            )}
 
           </div>
         </motion.div>

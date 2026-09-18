@@ -1,4 +1,4 @@
-import { ReactNode, Children, isValidElement, cloneElement, CSSProperties } from "react";
+import { ReactNode, Children, isValidElement, cloneElement, CSSProperties, HTMLAttributes } from "react";
 import "./ScrollStack.css";
 
 interface ScrollStackProps {
@@ -12,13 +12,13 @@ interface ScrollStackProps {
   className?: string;
 }
 
-interface ItemProps {
+interface ItemProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
 }
 
-export const ScrollStackItem = ({ children, className = "" }: ItemProps) => (
-  <div className={className}>{children}</div>
+export const ScrollStackItem = ({ children, className = "", ...props }: ItemProps) => (
+  <div className={className} {...props}>{children}</div>
 );
 
 const ScrollStack = ({
