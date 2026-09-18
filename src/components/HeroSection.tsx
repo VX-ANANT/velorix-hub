@@ -25,7 +25,7 @@ const HeroSection = () => {
 
       animation = animate(targets, {
         opacity: { from: 0 },
-        x: { from: (_target, index) => (index % 2 === 0 ? -12 : 12) },
+        x: { from: (_target, index = 0) => (index % 2 === 0 ? -12 : 12) },
         scale: { from: 0.94 },
         duration: 760,
         delay: stagger(85),
