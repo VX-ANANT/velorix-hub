@@ -974,6 +974,13 @@
   50% { background-position: -200% 0; }
 }
 
+@keyframes arena-scan {
+  0%, 14% { transform: translate3d(0, -100%, 0); opacity: 0; }
+  22% { opacity: 0.8; }
+  52% { transform: translate3d(0, 100%, 0); opacity: 0.25; }
+  53%, 100% { transform: translate3d(0, 100%, 0); opacity: 0; }
+}
+
 @keyframes splash-ring {
   0% { transform: scale(0.92); opacity: 0; }
   35% { opacity: 0.95; }
@@ -1053,6 +1060,21 @@
   .status-bar {
     height: 1.5rem;
   }
+
+  .platform-readiness-grid {
+    gap: 0.5rem;
+  }
+
+  .platform-readiness-item {
+    min-height: 3.9rem;
+    gap: 0.55rem;
+    padding: 0.58rem;
+  }
+
+  .platform-readiness-icon {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1063,6 +1085,10 @@
   .loading-splash-mark::after,
   .loading-splash-bar span {
     animation: none !important;
+  }
+
+  .hero-arena-scan {
+    display: none;
   }
 }
 
