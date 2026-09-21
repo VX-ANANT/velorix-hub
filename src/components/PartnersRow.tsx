@@ -59,11 +59,7 @@ const PartnersRow = () => {
               aria-label={`Highlight ${p.name}`}
               aria-pressed={activePartner === p.name}
               onClick={() => setActivePartner((current) => current === p.name ? null : p.name)}
-              className={`group h-14 shrink-0 rounded-lg border px-4 transition-all duration-300 ${
-                activePartner === p.name
-                  ? "border-primary/20 bg-primary/5 shadow-soft"
-                  : "border-transparent bg-transparent"
-              }`}
+              className="group h-14 shrink-0 border-0 bg-transparent px-4 shadow-none transition-none hover:bg-transparent focus-visible:bg-transparent data-[state=open]:bg-transparent"
             >
               <img
                 src={p.logo}
