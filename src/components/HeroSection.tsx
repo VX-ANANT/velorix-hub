@@ -1,17 +1,31 @@
 import { Download, ChevronDown, Smartphone, HardDrive, ShieldCheck, Trophy } from "@/lib/icons";
 import { AnimatedButton } from "@/components/ui/animated-button";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "@/lib/router-compat";
 import { playDownloadSound } from "@/hooks/useSoundEffect";
 import GradientText from "@/components/reactbits/GradientText";
-import PlatformReadinessRail from "@/components/PlatformReadinessRail";
+import Aurora from "@/components/reactbits/Aurora";
 import appPreview from "@/assets/gallery-1.png";
 
 const HeroSection = () => {
   const navigate = useNavigate();
+  const heroSectionRef = useRef<HTMLElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: heroSectionRef,
+    offset: ["start start", "end start"],
+  });
+  const auroraY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 110]), {
+    stiffness: 90,
+    damping: 24,
+  });
+  const previewY = useSpring(useTransform(scrollYProgress, [0, 1], [0, -54]), {
+    stiffness: 110,
+    damping: 28,
+  });
+  const previewRotate = useTransform(scrollYProgress, [0, 1], [0, -2.5]);
 
   useEffect(() => {
     const root = heroContentRef.current;
@@ -72,10 +86,23 @@ const HeroSection = () => {
 
   return (
     <section
+      ref={heroSectionRef}
       id="home"
       className="hero-command relative z-10 flex min-h-screen items-center overflow-hidden pt-28 pb-20 sm:pt-32 sm:pb-24"
     >
       <div className="absolute inset-0 bg-background" />
+      <motion.div
+        className="absolute inset-0 pointer-events-none opacity-70"
+        style={reduceMotion ? undefined : { y: auroraY }}
+        aria-hidden="true"
+      >
+        <Aurora
+          colorStops={["#ff1288", "#de4a63", "#e92042"]}
+          blend={1}
+          amplitude={1}
+          speed={1.5}
+        />
+      </motion.div>
       <div className="hero-command-grid absolute inset-0" aria-hidden="true" />
       <div className="hero-command-glow absolute inset-0" aria-hidden="true" />
       <div className="hero-bottom-fade absolute inset-x-0 bottom-0 h-56 pointer-events-none sm:h-64" aria-hidden="true" />
@@ -173,14 +200,15 @@ const HeroSection = () => {
             </AnimatedButton>
             </motion.div>
 
-            <PlatformReadinessRail />
           </div>
 
           <motion.div
             className="hero-arena-preview"
             initial={reduceMotion ? false : { opacity: 0, x: 32, scale: 0.96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ type: "spring", stiffness: 105, damping: 22, delay: 0.38 }}
+            style={reduceMotion ? undefined : { y: previewY, rotate: previewRotate }}
+            transition={{ type: "spring", stiffness: 105, damping: 22, mass: 0.9, delay: 0.38 }}
+            whileHover={reduceMotion ? undefined : { scale: 1.025, rotateX: -1.5, rotateY: 2.5 }}
           >
             <div className="hero-arena-header">
               <span className="flex items-center gap-2">
