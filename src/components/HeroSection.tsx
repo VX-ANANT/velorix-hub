@@ -1,15 +1,17 @@
-import { Download, ChevronDown, Smartphone, HardDrive } from "@/lib/icons";
+import { Download, ChevronDown, Smartphone, HardDrive, ShieldCheck, Trophy } from "@/lib/icons";
 import { AnimatedButton } from "@/components/ui/animated-button";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "@/lib/router-compat";
 import { playDownloadSound } from "@/hooks/useSoundEffect";
 import GradientText from "@/components/reactbits/GradientText";
-import Aurora from "@/components/reactbits/Aurora";
+import PlatformReadinessRail from "@/components/PlatformReadinessRail";
+import appPreview from "@/assets/gallery-1.png";
 
 const HeroSection = () => {
   const navigate = useNavigate();
   const heroContentRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const root = heroContentRef.current;
@@ -71,40 +73,28 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative z-10 flex min-h-screen items-center justify-center overflow-hidden pt-32 pb-24 sm:pt-36 sm:pb-28"
+      className="hero-command relative z-10 flex min-h-screen items-center overflow-hidden pt-28 pb-20 sm:pt-32 sm:pb-24"
     >
       <div className="absolute inset-0 bg-background" />
-      <div className="absolute inset-0 bg-mesh-gradient" />
-
-      {/* Aurora background effect */}
-      <div className="absolute inset-0 pointer-events-none opacity-70">
-        <Aurora
-          colorStops={["#ff1288", "#de4a63", "#e92042"]}
-          blend={1.0}
-          amplitude={1.0}
-          speed={1.5}
-        />
-      </div>
-
-      {/* Static ambient glow */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="hero-command-grid absolute inset-0" aria-hidden="true" />
+      <div className="hero-command-glow absolute inset-0" aria-hidden="true" />
       <div className="hero-bottom-fade absolute inset-x-0 bottom-0 h-56 pointer-events-none sm:h-64" aria-hidden="true" />
       <div className="hero-bottom-edge absolute inset-x-0 bottom-0 h-28 pointer-events-none sm:h-32" aria-hidden="true" />
       <div className="hero-bottom-haze absolute left-1/2 bottom-[-3.5rem] h-56 w-[128%] max-w-7xl -translate-x-1/2 pointer-events-none sm:bottom-[-4.5rem] sm:h-72" aria-hidden="true" />
       <div className="hero-bottom-haze-secondary absolute left-1/2 bottom-[-1.25rem] h-32 w-[96%] max-w-5xl -translate-x-1/2 pointer-events-none sm:h-40" aria-hidden="true" />
       <div className="hero-bottom-seam absolute inset-x-0 bottom-[-4rem] h-24 pointer-events-none sm:bottom-[-4.5rem] sm:h-32" aria-hidden="true" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container relative z-10 mx-auto px-4">
         <motion.div
           ref={heroContentRef}
-          className="mx-auto max-w-4xl text-center"
+          className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:gap-16"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.div variants={itemVariants} className="mb-8">
-            <div className="brand-emblem mx-auto">
+          <div className="text-center lg:text-left">
+            <motion.div variants={itemVariants} className="mb-7">
+              <div className="brand-emblem mx-auto lg:mx-0 lg:items-start">
               {/* Eyebrow tag */}
               <div className="brand-eyebrow" data-hero-brand>
                 <span className="brand-eyebrow-dot" />
@@ -122,7 +112,7 @@ const HeroSection = () => {
               </h1>
 
               {/* Decorative divider */}
-              <div className="brand-divider" aria-hidden="true" data-hero-brand>
+              <div className="brand-divider lg:justify-start" aria-hidden="true" data-hero-brand>
                 <span className="brand-divider-line" />
                 <span className="brand-divider-diamond" />
                 <span className="brand-divider-line" />
@@ -138,21 +128,18 @@ const HeroSection = () => {
                   Tournaments
                 </GradientText>
               </h2>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
 
-          <motion.p
-            className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-6"
-            variants={itemVariants}
-          >
-            India's go-to app for Free Fire & BGMI tournaments. Play daily
-            matches, win real rewards, and climb the leaderboard.
-          </motion.p>
+            <motion.p
+              className="mx-auto mb-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg lg:mx-0"
+              variants={itemVariants}
+            >
+              India's competitive arena for Free Fire and BGMI. Enter daily matches,
+              prove your rank, and claim rewards through one focused tournament app.
+            </motion.p>
 
-          <motion.div
-            className="flex flex-wrap items-center gap-3 justify-center mb-8"
-            variants={itemVariants}
-          >
+            <motion.div className="mb-7 flex flex-wrap items-center justify-center gap-3 lg:justify-start" variants={itemVariants}>
             <div className="liquid-glass flex items-center gap-2 px-4 py-2 rounded-full text-sm text-muted-foreground hover:border-primary/30 transition-colors">
               <Smartphone className="w-4 h-4 text-primary relative z-10" />
               <span className="relative z-10">VeloRix v1.0.0</span>
@@ -164,12 +151,9 @@ const HeroSection = () => {
             <div className="liquid-glass px-4 py-2 rounded-full text-sm text-muted-foreground hover:border-primary/30 transition-colors">
               <span className="relative z-10">Android 7.0+</span>
             </div>
-          </motion.div>
+            </motion.div>
 
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            variants={itemVariants}
-          >
+            <motion.div className="flex flex-col justify-center gap-3 sm:flex-row lg:justify-start" variants={itemVariants}>
             <AnimatedButton
               variant="hero"
               size="xl"
@@ -187,6 +171,38 @@ const HeroSection = () => {
             >
               <span className="relative z-10">Learn More</span>
             </AnimatedButton>
+            </motion.div>
+
+            <PlatformReadinessRail />
+          </div>
+
+          <motion.div
+            className="hero-arena-preview"
+            initial={reduceMotion ? false : { opacity: 0, x: 32, scale: 0.96 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 105, damping: 22, delay: 0.38 }}
+          >
+            <div className="hero-arena-header">
+              <span className="flex items-center gap-2">
+                <span className="hero-live-dot" aria-hidden="true" />
+                Arena systems online
+              </span>
+              <span>VX / 01</span>
+            </div>
+            <div className="hero-arena-screen">
+              <img
+                src={appPreview}
+                alt="VeloRix tournament app showing upcoming events, matches and a live bracket"
+                width={1024}
+                height={768}
+                fetchPriority="high"
+              />
+              <div className="hero-arena-scan" aria-hidden="true" />
+            </div>
+            <div className="hero-arena-footer">
+              <span><ShieldCheck className="h-4 w-4 text-primary" /> Verified matches</span>
+              <span><Trophy className="h-4 w-4 text-primary" /> Ranked rewards</span>
+            </div>
           </motion.div>
         </motion.div>
       </div>
@@ -195,7 +211,7 @@ const HeroSection = () => {
         <motion.button
           type="button"
           onClick={scrollToFeatures}
-          className="hero-scroll-cue"
+          className="hero-scroll-cue hidden sm:inline-flex"
           aria-label="Scroll to features"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
