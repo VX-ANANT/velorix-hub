@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import googleLogo from "@/assets/logos/google.png";
 import eslLogo from "@/assets/logos/esl.png";
 import riotLogo from "@/assets/logos/riot.png";
@@ -23,6 +25,7 @@ const partners = [
 
 const PartnersRow = () => {
   const doubled = [...partners, ...partners];
+  const [activePartner, setActivePartner] = useState<string | null>(null);
 
   return (
     <motion.section
@@ -49,13 +52,30 @@ const PartnersRow = () => {
         <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10" />
         <div className="marquee-track">
           {doubled.map((p, i) => (
-            <img
+            <Button
               key={`${p.name}-${i}`}
-              src={p.logo}
-              alt={p.name}
-              className={`h-8 md:h-10 w-auto object-contain opacity-30 hover:opacity-70 transition-all duration-300 grayscale hover:grayscale-0 shrink-0 ${p.invert ? "invert brightness-200" : ""}`}
-              loading="lazy"
-            />
+              type="button"
+              variant="ghost"
+              aria-label={`Highlight ${p.name}`}
+              aria-pressed={activePartner === p.name}
+              onClick={() => setActivePartner((current) => current === p.name ? null : p.name)}
+              className={`group h-14 shrink-0 rounded-lg border px-4 transition-all duration-300 ${
+                activePartner === p.name
+                  ? "border-primary/20 bg-primary/5 shadow-soft"
+                  : "border-transparent bg-transparent"
+              }`}
+            >
+              <img
+                src={p.logo}
+                alt={p.name}
+                className={`h-8 w-auto shrink-0 object-contain transition-all duration-300 md:h-10 ${
+                  activePartner === p.name
+                    ? "opacity-80 grayscale-0"
+                    : "opacity-30 grayscale group-hover:opacity-70 group-hover:grayscale-0"
+                } ${p.invert ? "invert brightness-200" : ""}`}
+                loading="lazy"
+              />
+            </Button>
           ))}
         </div>
       </div>
