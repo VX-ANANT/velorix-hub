@@ -128,11 +128,12 @@ const AppGallerySection = () => {
         </motion.div>
 
         <motion.div
-          className="relative mb-12 h-[60vh] max-h-[600px]"
+          className="relative mb-12"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
+          <div className="relative h-[60vh] max-h-[600px]">
           <Button
             type="button"
             variant="ghost"
@@ -192,6 +193,7 @@ const AppGallerySection = () => {
               </motion.div>
             </AnimatePresence>
           </div>
+          </div>
 
           <div className="mt-6 flex justify-center gap-3">
             {galleryImages.map((_, index) => (
@@ -214,7 +216,7 @@ const AppGallerySection = () => {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+          className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ staggerChildren: 0.09, delayChildren: 0.3 }}
@@ -226,13 +228,13 @@ const AppGallerySection = () => {
               animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
               transition={{ type: "spring", stiffness: 150, damping: 20, delay: index * 0.07 }}
               whileHover={shouldReduceMotion ? undefined : { y: -6, scale: 1.01 }}
-              className="group"
+              className="group min-w-0"
             >
-              <div className="glass rounded-xl p-5 text-center transition-all duration-300 hover:border-primary/40 hover:shadow-soft">
-                <h3 className="text-foreground font-semibold mb-1 group-hover:text-primary transition-colors">
+              <div className="glass flex min-h-36 flex-col items-center justify-center rounded-xl px-3 py-5 text-center transition-all duration-300 hover:border-primary/40 hover:shadow-soft sm:min-h-0 sm:p-5">
+                <h3 className="w-full break-words text-sm font-semibold text-foreground transition-colors group-hover:text-primary sm:text-base">
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">{feature.desc}</p>
+                <p className="mt-2 w-full break-words text-xs leading-5 text-muted-foreground sm:text-sm">{feature.desc}</p>
               </div>
             </motion.div>
           ))}
