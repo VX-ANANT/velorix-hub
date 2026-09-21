@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ImageWithSkeleton } from "@/components/ui/image-with-skeleton";
-import { ChevronLeft, ChevronRight, ShieldCheck } from "@/lib/icons";
+import { ChevronLeft, ChevronRight } from "@/lib/icons";
 import { Button } from "@/components/ui/button";
 import { playSound } from "@/hooks/useSoundEffect";
 import GradualBlur from "@/components/reactbits/GradualBlur";
@@ -128,7 +128,7 @@ const AppGallerySection = () => {
         </motion.div>
 
         <motion.div
-          className="arena-showcase relative mb-12 min-h-[31rem] sm:min-h-[37rem]"
+          className="relative mb-12 h-[60vh] max-h-[600px]"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -138,7 +138,7 @@ const AppGallerySection = () => {
             variant="ghost"
             size="icon"
             onClick={() => navigate(-1)}
-            className="arena-showcase-control left-3 sm:left-5"
+            className="glass group absolute left-4 top-1/2 z-20 h-12 w-12 -translate-y-1/2 rounded-full hover:border-primary/50 hover:bg-primary/10"
             aria-label="Show previous app screen"
           >
             <ChevronLeft className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
@@ -148,18 +148,13 @@ const AppGallerySection = () => {
             variant="ghost"
             size="icon"
             onClick={() => navigate(1)}
-            className="arena-showcase-control right-3 sm:right-5"
+            className="glass group absolute right-4 top-1/2 z-20 h-12 w-12 -translate-y-1/2 rounded-full hover:border-primary/50 hover:bg-primary/10"
             aria-label="Show next app screen"
           >
             <ChevronRight className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
           </Button>
 
-          <div className="arena-showcase-topline">
-            <span className="flex items-center gap-2"><span className="hero-live-dot" /> Live product view</span>
-            <span>{String(currentSlide + 1).padStart(2, "0")} / {String(galleryImages.length).padStart(2, "0")}</span>
-          </div>
-
-          <div className="absolute inset-x-0 bottom-16 top-14 flex items-center justify-center overflow-hidden">
+          <div className="relative flex h-full items-center justify-center overflow-hidden rounded-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
 
             <AnimatePresence initial={false} custom={direction} mode="wait">
@@ -190,15 +185,15 @@ const AppGallerySection = () => {
                     height={800}
                     loading="lazy"
                     decoding="async"
-                    className="relative z-10 max-h-[27rem] w-auto max-w-[78vw] object-contain rounded-xl shadow-2xl sm:max-h-[31rem]"
-                    skeletonClassName="w-[280px] h-[27rem] rounded-xl"
+                    className="relative z-10 max-h-[55vh] w-auto max-w-[78vw] rounded-xl object-contain shadow-2xl"
+                    skeletonClassName="h-[55vh] w-[300px] rounded-xl"
                   />
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          <div className="absolute inset-x-0 bottom-5 flex justify-center gap-3">
+          <div className="mt-6 flex justify-center gap-3">
             {galleryImages.map((_, index) => (
               <Button
                 type="button"
@@ -209,14 +204,10 @@ const AppGallerySection = () => {
                   setDirection(index > currentSlide ? 1 : -1);
                   setCurrentSlide(index);
                 }}
-                className={`min-h-11 min-w-11 rounded-md p-0 transition-all duration-300 ${
-                  currentSlide === index
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className="min-h-11 min-w-11 rounded-full p-0"
                 aria-label={`Go to slide ${index + 1}`}
               >
-                <span className={`block h-1.5 rounded-full transition-all ${currentSlide === index ? "w-7 bg-primary shadow-neon" : "w-2 bg-current"}`} />
+                 <span className={`block h-2 rounded-full transition-all duration-300 ${currentSlide === index ? "w-8 bg-primary shadow-neon" : "w-2 bg-muted-foreground/30"}`} />
               </Button>
             ))}
           </div>
@@ -226,19 +217,18 @@ const AppGallerySection = () => {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ staggerChildren: 0.09, delayChildren: 0.3 }}
         >
           {features.map((feature, index) => (
             <motion.div
               key={index}
+              initial={{ opacity: 0, y: 28, rotateX: -10 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+              transition={{ type: "spring", stiffness: 150, damping: 20, delay: index * 0.07 }}
               whileHover={shouldReduceMotion ? undefined : { y: -6, scale: 1.01 }}
               className="group"
             >
-              <div className="arena-system-card p-5 text-left">
-                <div className="mb-5 flex items-center justify-between text-xs uppercase text-muted-foreground">
-                  <span>System {String(index + 1).padStart(2, "0")}</span>
-                  <ShieldCheck className="h-4 w-4 text-primary" />
-                </div>
+              <div className="glass rounded-xl p-5 text-center transition-all duration-300 hover:border-primary/40 hover:shadow-soft">
                 <h3 className="text-foreground font-semibold mb-1 group-hover:text-primary transition-colors">
                   {feature.title}
                 </h3>
