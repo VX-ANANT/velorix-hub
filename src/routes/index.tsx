@@ -1,6 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Index from "@/pages/Index";
 import { buildTournamentEventsJsonLd } from "@/lib/tournamentEvents";
+import { faqs } from "@/data/faqs";
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
 
 const TITLE =
   "VeloRix Tournaments - Free Fire, BGMI & Esports Tournament App | Play & Win";
@@ -15,12 +26,14 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://velorix-hub.vercel.app/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app" }],
+    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/" }],
     scripts: [
+      { type: "application/ld+json", children: JSON.stringify(faqJsonLd) },
       {
         type: "application/ld+json",
         children: JSON.stringify(buildTournamentEventsJsonLd()),

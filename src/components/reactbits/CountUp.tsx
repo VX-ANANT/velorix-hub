@@ -33,7 +33,6 @@ export default function CountUp({
   const stiffness = 100 * (1 / duration);
 
   const springValue = useSpring(motionValue, { damping, stiffness });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const isInView = useInView(ref, { once: true, margin: "0px" });
 
   const getDecimalPlaces = (num: number): number => {

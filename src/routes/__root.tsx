@@ -62,52 +62,21 @@ const mobileApplicationJsonLd = {
   applicationCategory: "GameApplication",
   description:
     "The ultimate esports tournament platform for Free Fire, BGMI, Call of Duty Mobile & more. Compete in daily tournaments, win real cash prizes.",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "INR",
+    description: "Free download",
+    availability: "https://schema.org/InStock",
+  },
+  downloadUrl: `${SITE_URL}/download`,
+  fileSize: "25MB",
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.5",
     ratingCount: "1000",
   },
   author: { "@type": "Organization", name: "VeloRix", url: SITE_URL },
-};
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What is VeloRix Tournaments?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "VeloRix Tournaments is a competitive gaming platform for Free Fire, BGMI, and other eSports. Participate in daily tournaments, compete for real cash prizes, and connect with gamers.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How do I join a Free Fire tournament?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Download the VeloRix app, create your account, browse available Free Fire tournaments, and register. You'll receive notifications about match schedules and results.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is the tournament app free to download?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes! VeloRix Tournaments is completely free to download and use. Some premium tournaments may have entry fees, but there are plenty of free tournaments available.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What games are supported?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We support BGMI, Free Fire, Call of Duty Mobile, Valorant, and many more popular esports titles.",
-      },
-    },
-  ],
 };
 
 const organizationJsonLd = {
@@ -127,6 +96,20 @@ const organizationJsonLd = {
   description:
     "India-focused mobile esports tournament platform for Free Fire, BGMI and Call of Duty Mobile. Skill-based tournaments with real cash prizes.",
   email: "service.veloxyra@gmail.com",
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "Grievance Officer",
+      email: "service.veloxyra@gmail.com",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi"],
+      url: `${SITE_URL}/refunds`,
+    },
+  ],
+  publishingPrinciples: `${SITE_URL}/terms`,
+  ethicsPolicy: `${SITE_URL}/privacy`,
+  disambiguatingDescription:
+    "Skill-based esports tournament platform operating in India, not gambling or betting. Players must be 18+. Personal data is handled under India's Digital Personal Data Protection (DPDP) Act, 2023.",
   foundingDate: "2026",
   areaServed: { "@type": "Country", name: "India" },
   sameAs: [
@@ -361,7 +344,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "canonical", href: SITE_URL },
       { rel: "icon", type: "image/png", href: "/velorix-favicon.png" },
       {
         rel: "apple-touch-icon",
@@ -418,7 +400,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify(mobileApplicationJsonLd),
       },
-      { type: "application/ld+json", children: JSON.stringify(faqJsonLd) },
       {
         type: "application/ld+json",
         children: JSON.stringify(organizationJsonLd),
