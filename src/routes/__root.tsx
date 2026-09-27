@@ -96,16 +96,6 @@ const organizationJsonLd = {
   description:
     "India-focused mobile esports tournament platform for Free Fire, BGMI and Call of Duty Mobile. Skill-based tournaments with real cash prizes.",
   email: "service.veloxyra@gmail.com",
-  contactPoint: [
-    {
-      "@type": "ContactPoint",
-      contactType: "Grievance Officer",
-      email: "service.veloxyra@gmail.com",
-      areaServed: "IN",
-      availableLanguage: ["English", "Hindi"],
-      url: `${SITE_URL}/refunds`,
-    },
-  ],
   publishingPrinciples: `${SITE_URL}/terms`,
   ethicsPolicy: `${SITE_URL}/privacy`,
   disambiguatingDescription:
@@ -126,6 +116,14 @@ const organizationJsonLd = {
     "esports tournament formats",
   ],
   contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "Grievance Officer",
+      email: "service.veloxyra@gmail.com",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi"],
+      url: `${SITE_URL}/refunds`,
+    },
     {
       "@type": "ContactPoint",
       contactType: "customer support",
