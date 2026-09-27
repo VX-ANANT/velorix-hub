@@ -9,13 +9,15 @@ import qualcommLogo from "@/assets/logos/qualcomm.png";
 import rockstarLogo from "@/assets/logos/rockstar.png";
 import cognosphereLogo from "@/assets/logos/cognosphere.png";
 import kuroGamesLogo from "@/assets/logos/kuro-games.svg";
+import kraftonLogo from "@/assets/logos/krafton.png";
 import residentEvilLogo from "@/assets/logos/resident-evil.png";
 
 const partners = [
+  { name: "Krafton (BGMI)", logo: kraftonLogo, invert: false },
+  { name: "Garena (Free Fire)", logo: garenaLogo, invert: false },
   { name: "Google", logo: googleLogo, invert: false },
   { name: "ESL Gaming", logo: eslLogo, invert: false },
   { name: "Riot Games", logo: riotLogo, invert: false },
-  { name: "Garena", logo: garenaLogo, invert: false },
   { name: "Qualcomm", logo: qualcommLogo, invert: false },
   { name: "Rockstar Games", logo: rockstarLogo, invert: false },
   { name: "CognoSphere", logo: cognosphereLogo, invert: false },
@@ -43,7 +45,7 @@ const PartnersRow = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.4 }}
         >
-          Games & Partners
+          Supported Games & Platforms
         </motion.p>
       </div>
       {/* CSS-only infinite marquee — no JS animation frames */}

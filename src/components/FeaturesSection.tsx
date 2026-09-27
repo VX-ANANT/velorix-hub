@@ -12,25 +12,25 @@ const features = [
     icon: Shield,
     title: "Fair Play",
     description:
-      "No rigged matches. Your rank, your rewards — all based on how you actually play.",
+      "Server-side room ID validation, emulator bans, and manual screenshot verification to ensure clean competitive integrity.",
   },
   {
     icon: Zap,
-    title: "Runs Smooth",
+    title: "Low-End Optimization",
     description:
-      "We tested on budget phones too. The app stays quick even on low-end Android devices.",
+      "Lightweight ~25 MB APK engineered to run smoothly on 2GB RAM budget Android smartphones running Android 7.0+.",
   },
   {
     icon: Bell,
     title: "Match Alerts",
     description:
-      "Get a ping before your tournament starts. No more missing matches because you forgot.",
+      "Push notifications deliver Free Fire daily room IDs and BGMI match timings before every tournament starts.",
   },
   {
     icon: Award,
     title: "Quick Payouts",
     description:
-      "Won a match? Your winnings hit your wallet right after the results are out.",
+      "UPI instant payout: verified winnings are sent to your UPI or bank account within 15–30 minutes after results.",
   },
 ];
 
@@ -62,7 +62,7 @@ const FeaturesSection = () => {
             />
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Built by gamers who were tired of scammy tournament apps. Here's what makes us different.
+            VeloRix is a skill-based BGMI tournament app for India with fair-play checks, budget-phone support, and fast UPI payouts.
           </p>
         </motion.div>
 

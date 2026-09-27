@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import googlePlayIcon from "@/assets/logos/google-play.png";
 import appStoreIcon from "@/assets/logos/app-store.png";
 
-const badges = [
+const badges: Array<{ label: string; rating: string; icon?: JSX.Element; iconImg?: string; stars?: number; starColor?: string; href?: string; comingSoon?: boolean }> = [
   {
     label: "Trustpilot",
     rating: "4.5",
@@ -25,10 +25,9 @@ const badges = [
   },
   {
     label: "App Store",
-    rating: "4.7",
+    rating: "iOS Coming Soon",
     iconImg: appStoreIcon,
-    stars: 4.7,
-    starColor: "#007AFF",
+    comingSoon: true,
   },
 ];
 
@@ -105,8 +104,16 @@ const SocialProofBadges = () => {
                 <span className="text-[13px] font-medium text-foreground/70 group-hover:text-foreground transition-colors">
                   {b.label}
                 </span>
-                <Stars count={b.stars} color={b.starColor} />
-                <span className="text-[13px] font-semibold text-foreground/90">{b.rating}</span>
+                {b.comingSoon ? (
+                  <span className="rounded-full border border-border/60 px-2 py-0.5 text-[11px] font-semibold text-foreground/80">
+                    {b.rating}
+                  </span>
+                ) : (
+                  <>
+                    <Stars count={b.stars ?? 0} color={b.starColor ?? ""} />
+                    <span className="text-[13px] font-semibold text-foreground/90">{b.rating}</span>
+                  </>
+                )}
               </motion.div>
             );
 
