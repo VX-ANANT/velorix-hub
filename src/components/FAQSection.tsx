@@ -8,39 +8,9 @@ import { playSound } from "@/hooks/useSoundEffect";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import GradualBlur from "@/components/reactbits/GradualBlur";
+import { faqs } from "@/data/faqs";
 
-const faqs = [
-  {
-    question: "What is VeloRix Tournaments?",
-    answer:
-      "It's a tournament app for mobile gamers. You join matches, play against real people, and win rewards. We run daily tournaments for games like Free Fire, BGMI, and more.",
-  },
-  {
-    question: "How do I join a tournament?",
-    answer:
-      "Download the app, make an account, and check the tournament list. Tap on one you like, register, and show up when the match starts. You'll get a notification before it begins.",
-  },
-  {
-    question: "Is the app free?",
-    answer:
-      "Yeah, the app is free. Some tournaments have a small entry fee, but there are always free ones running too.",
-  },
-  {
-    question: "Which games can I play?",
-    answer:
-      "Right now we run tournaments for Free Fire, BGMI, Call of Duty Mobile, and a few others. We keep adding more based on what players ask for.",
-  },
-  {
-    question: "How do I get my winnings?",
-    answer:
-      "Winnings go to your in-app wallet. From there you can withdraw via UPI, bank transfer, or e-wallets like Paytm. It usually takes a few minutes.",
-  },
-  {
-    question: "Can I host my own tournament?",
-    answer:
-      "Yep. You can create a custom tournament, set your own rules and prize pool, and invite your friends or open it up to everyone.",
-  },
-];
+
 
 const FAQSection = () => {
   const { ref, isInView } = useScrollAnimation(0.1);
@@ -83,7 +53,7 @@ const FAQSection = () => {
             <span className="text-gradient text-glow">Questions</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Stuff people usually ask us before downloading.
+            Quick answers on joining BGMI and Free Fire tournaments, entry fees, and UPI payouts.
           </p>
         </motion.div>
 

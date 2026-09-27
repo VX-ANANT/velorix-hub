@@ -10,22 +10,22 @@ const steps = [
   {
     icon: Download,
     title: "Download App",
-    description: "Grab the APK from our site. It's lightweight — around 25 MB.",
+    description: "Download the free ~25 MB VeloRix APK for Android 7.0+ from the official site.",
   },
   {
     icon: Smartphone,
     title: "Install & Open",
-    description: "Tap install, open the app. That's it — no weird permissions or setup screens.",
+    description: "Allow install from this source, install the APK, and open the app — no extra setup screens.",
   },
   {
     icon: UserPlus,
     title: "Create Account",
-    description: "Enter your name, pick a username, and you're good to go.",
+    description: "Sign up with your name and a username; players must be 18+ to join paid tournaments.",
   },
   {
     icon: Gamepad2,
     title: "Join a Match",
-    description: "Browse open tournaments, pick one, and start competing for real rewards.",
+    description: "Register for a BGMI or Free Fire daily room, get the room ID in-app, and play for cash prizes.",
   },
 ];
 
@@ -65,7 +65,7 @@ const HowItWorksSection = () => {
             />
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Get started in under a minute. No complicated setup — just download, sign up, and you're in.
+            Joining a VeloRix tournament takes four steps: download the Android APK, install it, create an account, and register for a match.
           </p>
         </motion.div>
 

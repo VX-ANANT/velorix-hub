@@ -162,8 +162,8 @@ const HeroSection = () => {
               className="mx-auto mb-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg lg:mx-0"
               variants={itemVariants}
             >
-              India's competitive arena for Free Fire and BGMI. Enter daily matches,
-              prove your rank, and claim rewards through one focused tournament app.
+              VeloRix is a free BGMI and Free Fire tournament app for India: daily custom
+              rooms, skill-based cash prizes, and UPI payouts on Android 7.0+.
             </motion.p>
 
             <motion.div className="mb-7 flex flex-wrap items-center justify-center gap-3 lg:justify-start" variants={itemVariants}>

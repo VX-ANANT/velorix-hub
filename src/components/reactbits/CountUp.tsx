@@ -60,14 +60,13 @@ export default function CountUp({
     [maxDecimals, separator]
   );
 
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.textContent = formatValue(direction === "down" ? to : from);
-    }
-  }, [from, to, direction, formatValue]);
-
+  // Final value stays in the SSR/static DOM for crawlers; animation starts only in view.
   useEffect(() => {
     if (!isInView || !startWhen) return undefined;
+    const start = direction === "down" ? to : from;
+    motionValue.jump(start);
+    springValue.jump(start);
+    if (ref.current) ref.current.textContent = formatValue(start);
     onStart?.();
     const t1 = setTimeout(() => motionValue.set(direction === "down" ? from : to), delay * 1000);
     const t2 = setTimeout(() => onEnd?.(), delay * 1000 + duration * 1000);
@@ -84,5 +83,10 @@ export default function CountUp({
     return () => unsub();
   }, [springValue, formatValue]);
 
-  return <span className={className} ref={ref} />;
+  const finalValue = direction === "down" ? from : to;
+  return (
+    <span className={className} ref={ref} data-target={finalValue} suppressHydrationWarning>
+      {formatValue(finalValue)}
+    </span>
+  );
 }
