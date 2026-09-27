@@ -1,9 +1,10 @@
+import type React from "react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import googlePlayIcon from "@/assets/logos/google-play.png";
 import appStoreIcon from "@/assets/logos/app-store.png";
 
-const badges: Array<{ label: string; rating: string; icon?: JSX.Element; iconImg?: string; stars?: number; starColor?: string; href?: string; comingSoon?: boolean }> = [
+const badges: Array<{ label: string; rating: string; icon?: React.ReactNode; iconImg?: string; stars?: number; starColor?: string; href?: string; comingSoon?: boolean }> = [
   {
     label: "Trustpilot",
     rating: "4.5",
