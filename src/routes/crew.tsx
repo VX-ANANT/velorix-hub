@@ -4,6 +4,7 @@ import Crew from "@/pages/Crew";
 export const Route = createFileRoute("/crew")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "Crew Access | VeloRix Tournaments" },
       { name: "description", content: "Restricted crew sign-in for the VeloRix Tournaments operations team." },
       { property: "og:title", content: "Crew Access | VeloRix Tournaments" },

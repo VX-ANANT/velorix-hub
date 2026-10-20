@@ -4,6 +4,7 @@ import Error401 from "@/pages/errors/Error401";
 export const Route = createFileRoute("/error/401")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "401 Unauthorized | VeloRix Tournaments" },
       { name: "description", content: "Authentication is required to view this resource." },
       { property: "og:title", content: "401 Unauthorized | VeloRix Tournaments" },

@@ -4,6 +4,7 @@ import Error403 from "@/pages/errors/Error403";
 export const Route = createFileRoute("/error/403")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "403 Forbidden | VeloRix Tournaments" },
       { name: "description", content: "You do not have clearance to access this resource." },
       { property: "og:title", content: "403 Forbidden | VeloRix Tournaments" },

@@ -4,6 +4,7 @@ import Maintenance from "@/pages/errors/Maintenance";
 export const Route = createFileRoute("/maintenance")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "Scheduled Maintenance | VeloRix Tournaments" },
       { name: "description", content: "VeloRix Tournaments is briefly down for scheduled maintenance." },
       { property: "og:title", content: "Scheduled Maintenance | VeloRix Tournaments" },

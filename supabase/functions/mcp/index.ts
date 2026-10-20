@@ -3,7 +3,7 @@
 // supabase function: mcp
 // Bundled from src/lib/mcp/index.ts by @lovable.dev/mcp-js.
 // src/lib/mcp/index.ts
-import { defineMcp } from "npm:@lovable.dev/mcp-js@0.27.0";
+import { auth, defineMcp } from "npm:@lovable.dev/mcp-js@0.27.0";
 
 // src/lib/mcp/tools/list-published-pages.ts
 import { createClient } from "npm:@supabase/supabase-js@^2.105.3";
@@ -118,11 +118,17 @@ ${message}` }],
 });
 
 // src/lib/mcp/index.ts
+var supabaseUrl = "https://pvzoeafqfkwfgiiflaol.supabase.co";
 var mcp_default = defineMcp({
   name: "velorix-mcp",
   title: "VeloRix",
   version: "0.1.0",
-  instructions: "Public tools for VeloRix \u2014 India's Free Fire / BGMI tournament platform. Use `list_published_pages` to discover tournaments, announcements and policy pages, `get_page` to read one, `get_active_apk` to get the current Android APK download info, and `get_site_status` to check if the site is live.",
+  instructions: "Tools for VeloRix \u2014 India's Free Fire / BGMI tournament platform. Requires signing in with a VeloRix account. Use `list_published_pages` to discover tournaments, announcements and policy pages, `get_page` to read one, `get_active_apk` to get the current Android APK download info, and `get_site_status` to check if the site is live.",
+  auth: auth.oauth.issuer({
+    issuer: `${supabaseUrl}/auth/v1`,
+    acceptedAudiences: "authenticated",
+    jwksUri: `${supabaseUrl}/auth/v1/.well-known/jwks.json`
+  }),
   tools: [list_published_pages_default, get_page_default, get_active_apk_default, get_site_status_default]
 });
 

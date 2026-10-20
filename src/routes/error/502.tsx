@@ -4,6 +4,7 @@ import Error502 from "@/pages/errors/Error502";
 export const Route = createFileRoute("/error/502")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "502 Bad Gateway | VeloRix Tournaments" },
       { name: "description", content: "An upstream service returned an invalid response." },
       { property: "og:title", content: "502 Bad Gateway | VeloRix Tournaments" },

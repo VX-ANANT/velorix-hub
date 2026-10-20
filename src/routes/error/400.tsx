@@ -4,6 +4,7 @@ import Error400 from "@/pages/errors/Error400";
 export const Route = createFileRoute("/error/400")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "400 Bad Request | VeloRix Tournaments" },
       { name: "description", content: "The request could not be understood by the server." },
       { property: "og:title", content: "400 Bad Request | VeloRix Tournaments" },

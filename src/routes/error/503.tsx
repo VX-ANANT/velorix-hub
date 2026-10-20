@@ -4,6 +4,7 @@ import Error503 from "@/pages/errors/Error503";
 export const Route = createFileRoute("/error/503")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "503 Service Unavailable | VeloRix Tournaments" },
       { name: "description", content: "The service is temporarily unavailable." },
       { property: "og:title", content: "503 Service Unavailable | VeloRix Tournaments" },

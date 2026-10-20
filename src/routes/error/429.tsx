@@ -4,6 +4,7 @@ import Error429 from "@/pages/errors/Error429";
 export const Route = createFileRoute("/error/429")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "429 Too Many Requests | VeloRix Tournaments" },
       { name: "description", content: "You have sent too many requests. Slow down and try again." },
       { property: "og:title", content: "429 Too Many Requests | VeloRix Tournaments" },

@@ -127,7 +127,8 @@ describe("structured data", () => {
 
   it("emits JSON-LD from the root route", () => {
     const blocks = root_tsx.match(/type: "application\/ld\+json"/g) ?? [];
-    expect(blocks.length).toBeGreaterThanOrEqual(4);
+    // MobileApplication, Organization, WebSite (FAQPage lives on the index route).
+    expect(blocks.length).toBeGreaterThanOrEqual(3);
   });
 
   it("Organization schema is complete", () => {
