@@ -4,6 +4,7 @@ import Error500 from "@/pages/errors/Error500";
 export const Route = createFileRoute("/error/500")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "500 Internal Server Error | VeloRix Tournaments" },
       { name: "description", content: "Something broke on our side. The team has been alerted." },
       { property: "og:title", content: "500 Internal Server Error | VeloRix Tournaments" },

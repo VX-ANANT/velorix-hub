@@ -216,6 +216,33 @@ function RootComponent() {
     });
   }, []);
 
+  // Load Google News scripts only for real visitors, after first interaction.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (/bot|crawl|spider|lighthouse|inspection/i.test(navigator.userAgent)) return;
+    let done = false;
+    const events = ["pointerdown", "keydown", "scroll", "touchstart"] as const;
+    const load = () => {
+      if (done) return;
+      done = true;
+      events.forEach((e) => window.removeEventListener(e, load));
+      const inline = document.createElement("script");
+      inline.text = SWG_BASIC_SNIPPET;
+      document.head.appendChild(inline);
+      for (const src of [
+        "https://news.google.com/swg/js/v1/publisher.js",
+        "https://news.google.com/swg/js/v1/swg-basic.js",
+      ]) {
+        const s = document.createElement("script");
+        s.src = src;
+        s.async = true;
+        document.head.appendChild(s);
+      }
+    };
+    events.forEach((e) => window.addEventListener(e, load, { once: true, passive: true }));
+    return () => events.forEach((e) => window.removeEventListener(e, load));
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -379,16 +406,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       { children: GTM_SNIPPET },
-      {
-        src: "https://news.google.com/swg/js/v1/publisher.js",
-        async: true,
-      },
-      {
-        src: "https://news.google.com/swg/js/v1/swg-basic.js",
-        async: true,
-        type: "application/javascript",
-      },
-      { children: SWG_BASIC_SNIPPET },
+      // Google News (publisher.js / swg-basic.js) is injected client-side after
+      // the first real user interaction — see useDeferredGoogleNews below — so
+      // Googlebot's renderer never fetches news.google.com resources that its
+      // own robots.txt blocks (avoids "Page resources couldn't be loaded").
+
 
       {
         src: "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js",

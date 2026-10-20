@@ -4,6 +4,7 @@ import AdminPanel from "@/pages/AdminPanel";
 export const Route = createFileRoute("/vx-control")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "Control Room | VeloRix Tournaments" },
       { name: "description", content: "Internal VeloRix Tournaments control room." },
       { property: "og:title", content: "Control Room | VeloRix Tournaments" },

@@ -4,6 +4,7 @@ import Error504 from "@/pages/errors/Error504";
 export const Route = createFileRoute("/error/504")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "504 Gateway Timeout | VeloRix Tournaments" },
       { name: "description", content: "An upstream service took too long to respond." },
       { property: "og:title", content: "504 Gateway Timeout | VeloRix Tournaments" },

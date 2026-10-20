@@ -4,6 +4,7 @@ import Error408 from "@/pages/errors/Error408";
 export const Route = createFileRoute("/error/408")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "408 Request Timeout | VeloRix Tournaments" },
       { name: "description", content: "The request took too long and timed out." },
       { property: "og:title", content: "408 Request Timeout | VeloRix Tournaments" },
