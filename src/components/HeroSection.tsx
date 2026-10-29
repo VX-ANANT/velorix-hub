@@ -1,262 +1,133 @@
-import { Download, ChevronDown, Smartphone, HardDrive, ShieldCheck, Trophy } from "@/lib/icons";
+import { Download, ArrowRight, ShieldCheck, Trophy, Zap } from "@/lib/icons";
 import { AnimatedButton } from "@/components/ui/animated-button";
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { useNavigate } from "@/lib/router-compat";
 import { playDownloadSound } from "@/hooks/useSoundEffect";
-import GradientText from "@/components/reactbits/GradientText";
 import Aurora from "@/components/reactbits/Aurora";
 import IPhoneMockup from "@/components/IPhoneMockup";
 import { appScreens } from "@/data/appScreens";
 
+const stats = [
+  { value: "4,24,000+", label: "Players" },
+  { value: "4.6", label: "Rating" },
+  { value: "100+", label: "Daily rooms" },
+  { value: "15–30 min", label: "UPI payouts" },
+];
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+/** Hero inspired by 21st.dev "Phone Scroll Hero": tilted phone flattens and climbs as you scroll. */
 const HeroSection = () => {
   const navigate = useNavigate();
-  const heroSectionRef = useRef<HTMLElement>(null);
-  const heroContentRef = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: heroSectionRef,
-    offset: ["start start", "end start"],
-  });
-  const auroraY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 110]), {
-    stiffness: 90,
-    damping: 24,
-  });
-  const previewY = useSpring(useTransform(scrollYProgress, [0, 1], [0, -54]), {
-    stiffness: 110,
-    damping: 28,
-  });
-  const previewRotate = useTransform(scrollYProgress, [0, 1], [0, -2.5]);
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const rotateX = useTransform(scrollYProgress, [0, 0.5], [18, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, -60]);
+  const sideY = useTransform(scrollYProgress, [0, 0.5], [40, -10]);
 
-  useEffect(() => {
-    const root = heroContentRef.current;
-    if (!root || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let animation: { revert: () => unknown } | undefined;
-    let cancelled = false;
-
-    const playWordmarkReveal = async () => {
-      const targets = root.querySelectorAll<HTMLElement>("[data-hero-brand]");
-      const { animate, stagger } = await import("animejs");
-      if (cancelled) return;
-
-      animation = animate(targets, {
-        opacity: { from: 0 },
-        x: { from: -12 },
-        scale: { from: 0.94 },
-        duration: 760,
-        delay: stagger(85),
-        ease: "outExpo",
-      });
-    };
-
-    void playWordmarkReveal();
-    return () => {
-      cancelled = true;
-      animation?.revert();
-    };
-  }, []);
   const handleDownload = () => {
     playDownloadSound();
     navigate("/download");
   };
 
-  const scrollToFeatures = () => {
-    const featuresSection = document.getElementById("features");
-    if (featuresSection) {
-      featuresSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as const },
-    },
-  };
-
   return (
-    <section
-      ref={heroSectionRef}
-      id="home"
-      className="hero-command relative z-10 flex min-h-screen items-center overflow-hidden pt-28 pb-20 sm:pt-32 sm:pb-24"
-    >
+    <section ref={ref} id="home" className="relative z-10 overflow-hidden pt-32 pb-16 sm:pt-40">
       <div className="absolute inset-0 bg-background" />
-      <motion.div
-        className="absolute inset-0 pointer-events-none opacity-70"
-        style={reduceMotion ? undefined : { y: auroraY }}
-        aria-hidden="true"
-      >
-        <Aurora
-          colorStops={["#ff1288", "#de4a63", "#e92042"]}
-          blend={1}
-          amplitude={1}
-          speed={1.5}
-        />
-      </motion.div>
-      <div className="hero-command-grid absolute inset-0" aria-hidden="true" />
-      <div className="hero-command-glow absolute inset-0" aria-hidden="true" />
-      <div className="hero-bottom-fade absolute inset-x-0 bottom-0 h-56 pointer-events-none sm:h-64" aria-hidden="true" />
-      <div className="hero-bottom-edge absolute inset-x-0 bottom-0 h-28 pointer-events-none sm:h-32" aria-hidden="true" />
-      <div className="hero-bottom-haze absolute left-1/2 bottom-[-3.5rem] h-56 w-[128%] max-w-7xl -translate-x-1/2 pointer-events-none sm:bottom-[-4.5rem] sm:h-72" aria-hidden="true" />
-      <div className="hero-bottom-haze-secondary absolute left-1/2 bottom-[-1.25rem] h-32 w-[96%] max-w-5xl -translate-x-1/2 pointer-events-none sm:h-40" aria-hidden="true" />
-      <div className="hero-bottom-seam absolute inset-x-0 bottom-[-4rem] h-24 pointer-events-none sm:bottom-[-4.5rem] sm:h-32" aria-hidden="true" />
-
-      <div className="container relative z-10 mx-auto px-4">
-        <motion.div
-          ref={heroContentRef}
-          className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:gap-16"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="text-center lg:text-left">
-            <motion.div variants={itemVariants} className="mb-7">
-              <div className="brand-emblem mx-auto lg:mx-0 lg:items-start">
-              {/* Eyebrow tag */}
-              <div className="brand-eyebrow" data-hero-brand>
-                <span className="brand-eyebrow-dot" />
-                <span>EST · 2025 — INDIA</span>
-                <span className="brand-eyebrow-dot" />
-              </div>
-
-              {/* Main wordmark */}
-              <h1 className="brand-wordmark" data-hero-brand>
-                <span className="brand-wordmark-bracket left">[</span>
-                <span className="text-gradient text-glow brand-wordmark-text">
-                  VeloRix
-                </span>
-                <span className="brand-wordmark-bracket right">]</span>
-              </h1>
-
-              {/* Decorative divider */}
-              <div className="brand-divider lg:justify-start" aria-hidden="true" data-hero-brand>
-                <span className="brand-divider-line" />
-                <span className="brand-divider-diamond" />
-                <span className="brand-divider-line" />
-              </div>
-
-              {/* Subtitle */}
-              <h2 className="brand-subtitle" data-hero-brand>
-                <GradientText
-                  colors={["#ff2d55", "#ffffff", "#ff5577", "#ff2d55"]}
-                  animationSpeed={6}
-                  className="brand-subtitle-text"
-                >
-                  Tournaments
-                </GradientText>
-              </h2>
-              </div>
-            </motion.div>
-
-            <motion.p
-              className="mx-auto mb-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg lg:mx-0"
-              variants={itemVariants}
-            >
-              VeloRix is a free BGMI and Free Fire tournament app for India: daily custom
-              rooms, skill-based cash prizes, and UPI payouts on Android 7.0+.
-            </motion.p>
-
-            <motion.div className="mb-7 flex flex-wrap items-center justify-center gap-3 lg:justify-start" variants={itemVariants}>
-            <div className="liquid-glass flex items-center gap-2 px-4 py-2 rounded-full text-sm text-muted-foreground hover:border-primary/30 transition-colors">
-              <Smartphone className="w-4 h-4 text-primary relative z-10" />
-              <span className="relative z-10">VeloRix v1.0.0</span>
-            </div>
-            <div className="liquid-glass flex items-center gap-2 px-4 py-2 rounded-full text-sm text-muted-foreground hover:border-primary/30 transition-colors">
-              <HardDrive className="w-4 h-4 text-primary relative z-10" />
-              <span className="relative z-10">~25 MB</span>
-            </div>
-            <div className="liquid-glass px-4 py-2 rounded-full text-sm text-muted-foreground hover:border-primary/30 transition-colors">
-              <span className="relative z-10">Android 7.0+</span>
-            </div>
-            </motion.div>
-
-            <motion.div className="flex flex-col justify-center gap-3 sm:flex-row lg:justify-start" variants={itemVariants}>
-            <AnimatedButton
-              variant="hero"
-              size="xl"
-              className="pulse-glow"
-              onClick={handleDownload}
-            >
-              <Download className="w-5 h-5" />
-              Download App
-            </AnimatedButton>
-            <AnimatedButton
-              variant="heroOutline"
-              size="xl"
-              onClick={scrollToFeatures}
-              className="liquid-glass hover:border-primary/50 transition-all rounded-xl"
-            >
-              <span className="relative z-10">Learn More</span>
-            </AnimatedButton>
-            </motion.div>
-
-          </div>
-
-          <motion.div
-            className="hero-arena-preview"
-            initial={reduceMotion ? false : { opacity: 0, x: 32, scale: 0.96 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            style={reduceMotion ? undefined : { y: previewY, rotate: previewRotate }}
-            transition={{ type: "spring", stiffness: 105, damping: 22, mass: 0.9, delay: 0.38 }}
-            whileHover={reduceMotion ? undefined : { scale: 1.025, rotateX: -1.5, rotateY: 2.5 }}
-          >
-            <div className="hero-arena-header">
-              <span className="flex items-center gap-2">
-                <span className="hero-live-dot" aria-hidden="true" />
-                Arena systems online
-              </span>
-              <span>VX / 01</span>
-            </div>
-            <div className="hero-phone-stage">
-              <IPhoneMockup
-                src={appScreens[5].src}
-                alt={appScreens[5].alt}
-                className="hero-phone hero-phone-back"
-              />
-              <IPhoneMockup
-                src={appScreens[0].src}
-                alt={appScreens[0].alt}
-                className="hero-phone hero-phone-front"
-                priority
-              />
-            </div>
-            <div className="hero-arena-footer">
-              <span><ShieldCheck className="h-4 w-4 text-primary" /> Verified matches</span>
-              <span><Trophy className="h-4 w-4 text-primary" /> Ranked rewards</span>
-            </div>
-          </motion.div>
-        </motion.div>
+      <div className="absolute inset-0 opacity-60 pointer-events-none" aria-hidden="true">
+        <Aurora colorStops={["#ff1288", "#de4a63", "#e92042"]} blend={1} amplitude={1} speed={1.5} />
       </div>
+      <div className="vx-grid-bg absolute inset-0 pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
-      <div className="absolute bottom-5 left-1/2 z-20 -translate-x-1/2 sm:bottom-8">
-        <motion.button
-          type="button"
-          onClick={scrollToFeatures}
-          className="hero-scroll-cue hidden sm:inline-flex"
-          aria-label="Scroll to features"
-          initial={{ opacity: 0, y: 20 }}
+      <div className="container relative z-10 mx-auto px-4 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1, duration: 0.5 }}
-          whileHover={{ y: -2, scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          transition={{ duration: 0.6, ease }}
+          className="vx-eyebrow"
         >
-          <span className="hero-scroll-label">Scroll down</span>
-          <span className="hero-scroll-dot" />
-          <div className="chevron-bounce">
-            <ChevronDown className="w-5 h-5 text-primary" />
+          <span className="vx-dot" /> Rooms open daily · India
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, ease, delay: 0.1 }}
+          className="mx-auto mt-6 max-w-5xl font-display text-5xl leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-8xl"
+        >
+          Drop in. Clutch up.
+          <br />
+          <span className="text-gradient text-glow">Get paid.</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease, delay: 0.25 }}
+          className="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg"
+        >
+          VeloRix is a free BGMI and Free Fire tournament app for India: daily custom rooms,
+          skill-based cash prizes, and UPI payouts on Android 7.0+. ~25 MB, built for budget phones.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease, delay: 0.35 }}
+          className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+        >
+          <AnimatedButton variant="hero" size="xl" className="pulse-glow rounded-full px-8" onClick={handleDownload}>
+            <Download className="h-5 w-5" /> Download for Android
+          </AnimatedButton>
+          <a
+            href="#how-it-works"
+            className="group inline-flex h-12 items-center gap-2 rounded-full border border-border px-7 text-sm font-medium text-foreground transition-colors hover:border-primary/60"
+          >
+            How it works
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </a>
+        </motion.div>
+
+        {/* Phones */}
+        <div className="relative mx-auto mt-16 max-w-5xl" style={{ perspective: "1200px" }}>
+          <div className="pointer-events-none absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/30 blur-[110px]" />
+          <div className="relative flex items-end justify-center gap-4 sm:gap-8">
+            <motion.div className="hidden w-48 md:block lg:w-56" style={reduce ? undefined : { y: sideY }}>
+              <IPhoneMockup src={appScreens[1].src} alt={appScreens[1].alt} className="opacity-70 -rotate-6" />
+            </motion.div>
+            <motion.div
+              className="w-60 sm:w-72"
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease, delay: 0.4 }}
+              style={reduce ? undefined : { rotateX, y, transformStyle: "preserve-3d" }}
+            >
+              <IPhoneMockup src={appScreens[0].src} alt={appScreens[0].alt} priority />
+            </motion.div>
+            <motion.div className="hidden w-48 md:block lg:w-56" style={reduce ? undefined : { y: sideY }}>
+              <IPhoneMockup src={appScreens[5].src} alt={appScreens[5].alt} className="opacity-70 rotate-6" />
+            </motion.div>
           </div>
-        </motion.button>
+
+          {/* Floating chips */}
+          <div className="pointer-events-none absolute inset-0 hidden sm:block">
+            <span className="vx-eyebrow absolute left-[6%] top-[18%] bg-background/80 backdrop-blur"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Verified results</span>
+            <span className="vx-eyebrow absolute right-[6%] top-[30%] bg-background/80 backdrop-blur"><Zap className="h-3.5 w-3.5 text-primary" /> Instant UPI</span>
+            <span className="vx-eyebrow absolute left-[10%] bottom-[22%] bg-background/80 backdrop-blur"><Trophy className="h-3.5 w-3.5 text-primary" /> Ranked rewards</span>
+          </div>
+        </div>
+
+        {/* Stats strip — static values so crawlers read real numbers */}
+        <dl className="relative mx-auto -mt-6 grid max-w-4xl grid-cols-2 overflow-hidden rounded-2xl border border-border bg-background/80 backdrop-blur-md sm:grid-cols-4">
+          {stats.map((s, i) => (
+            <div key={s.label} className={`px-4 py-5 ${i % 2 ? "border-l" : ""} ${i > 1 ? "border-t sm:border-t-0" : ""} sm:border-l first:sm:border-l-0 border-border`}>
+              <dt className="text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">{s.label}</dt>
+              <dd className="mt-1 font-display text-2xl text-foreground sm:text-3xl">{s.value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );
