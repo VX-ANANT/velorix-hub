@@ -86,7 +86,7 @@ const PlayerVoices = () => {
             Real players
           </p>
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-            What the <span className="text-gradient">squad</span> says
+            What the squad says
           </h2>
           {hasRating ? (
             <div className="mt-4 flex items-center justify-center gap-3">

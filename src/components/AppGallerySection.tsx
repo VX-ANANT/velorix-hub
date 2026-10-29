@@ -108,7 +108,7 @@ const AppGallerySection = () => {
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             <span className="text-foreground">App </span>
-            <span className="text-gradient text-glow">Gallery</span>
+            <span>Gallery</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Step inside the tournament command center—from discovery to rewards.

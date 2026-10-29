@@ -17,7 +17,7 @@ const FeaturesSection = () => (
       <div className="mx-auto mb-14 max-w-3xl text-center">
         <span className="vx-eyebrow"><span className="vx-dot" /> Why VeloRix</span>
         <h2 className="mt-5 font-display text-4xl leading-tight text-foreground sm:text-6xl">
-          Built for grinders, <span className="text-gradient">not for show.</span>
+          Built for grinders, not for show.
         </h2>
         <p className="mt-4 text-muted-foreground sm:text-lg">
           VeloRix is a skill-based BGMI tournament app for India with fair-play checks, budget-phone support, and fast UPI payouts.
