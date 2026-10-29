@@ -1,26 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { ImageWithSkeleton } from "@/components/ui/image-with-skeleton";
+import IPhoneMockup from "@/components/IPhoneMockup";
+import { appScreens } from "@/data/appScreens";
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
 import { Button } from "@/components/ui/button";
 import { playSound } from "@/hooks/useSoundEffect";
 import GradualBlur from "@/components/reactbits/GradualBlur";
-import gallery1 from "@/assets/gallery-1.png";
-import gallery2 from "@/assets/gallery-2.png";
-import gallery3 from "@/assets/gallery-3.png";
-import gallery4 from "@/assets/gallery-4.png";
-import gallery5 from "@/assets/gallery-5.png";
-import gallery6 from "@/assets/gallery-6.png";
 
-const galleryImages = [
-  { src: gallery1, alt: "Tournament Events Interface" },
-  { src: gallery2, alt: "Esports Championship Design" },
-  { src: gallery3, alt: "Mobile App Dashboard" },
-  { src: gallery4, alt: "Chat & Community Features" },
-  { src: gallery5, alt: "Messaging Interface" },
-  { src: gallery6, alt: "Storage & Features" },
-];
+const galleryImages = appScreens;
 
 const features = [
   { title: "Live Tournaments", desc: "Join real-time competitions" },
@@ -177,17 +165,27 @@ const AppGallerySection = () => {
                 }
                 className="absolute inset-0 flex items-center justify-center"
               >
-                <div className="relative group">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 via-primary/20 to-primary/30 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity" />
-                  <ImageWithSkeleton
-                    src={galleryImages[currentSlide].src}
-                    alt={galleryImages[currentSlide].alt}
-                    width={400}
-                    height={800}
-                    loading="lazy"
-                    decoding="async"
-                    className="relative z-10 max-h-[55vh] w-auto max-w-[78vw] rounded-xl object-contain shadow-2xl"
-                    skeletonClassName="h-[55vh] w-[300px] rounded-xl"
+                <div className="relative flex items-center justify-center gap-6 lg:gap-10">
+                  <IPhoneMockup
+                    src={galleryImages[(currentSlide - 1 + galleryImages.length) % galleryImages.length].src}
+                    alt=""
+                    className="gallery-phone-side hidden h-[42vh] max-h-[440px] w-auto md:block"
+                  />
+                  <div className="relative">
+                    <div className="absolute -inset-10 rounded-full bg-primary/25 blur-3xl" aria-hidden="true" />
+                    <IPhoneMockup
+                      src={galleryImages[currentSlide].src}
+                      alt={galleryImages[currentSlide].alt}
+                      className="relative h-[54vh] max-h-[560px] w-auto"
+                    />
+                    <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                      {String(currentSlide + 1).padStart(2, "0")} / {galleryImages[currentSlide].title}
+                    </span>
+                  </div>
+                  <IPhoneMockup
+                    src={galleryImages[(currentSlide + 1) % galleryImages.length].src}
+                    alt=""
+                    className="gallery-phone-side hidden h-[42vh] max-h-[440px] w-auto md:block"
                   />
                 </div>
               </motion.div>
@@ -195,7 +193,7 @@ const AppGallerySection = () => {
           </div>
           </div>
 
-          <div className="mt-6 flex justify-center gap-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-x-1 gap-y-0">
             {galleryImages.map((_, index) => (
               <Button
                 type="button"
