@@ -193,7 +193,7 @@ const AppGallerySection = () => {
           </div>
           </div>
 
-          <div className="mt-6 flex justify-center gap-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-x-1 gap-y-0">
             {galleryImages.map((_, index) => (
               <Button
                 type="button"
