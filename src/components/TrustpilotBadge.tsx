@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const TrustpilotBadge = () => {
   return (
     <motion.a
-      href="https://www.trustpilot.com/review/velorix-hub.vercel.app"
+      href="https://www.trustpilot.com/review/velorix-esports.tech"
       target="_blank"
       rel="noopener noreferrer"
       className="inline-flex items-center gap-3 px-5 py-3 rounded-xl border border-border/40 hover:border-primary/30 transition-all duration-300 group cursor-pointer"

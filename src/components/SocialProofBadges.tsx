@@ -15,7 +15,7 @@ const badges: Array<{ label: string; rating: string; icon?: React.ReactNode; ico
     ),
     stars: 4.5,
     starColor: "#00B67A",
-    href: "https://www.trustpilot.com/review/velorix-hub.vercel.app",
+    href: "https://www.trustpilot.com/review/velorix-esports.tech",
   },
   {
     label: "Google Play",

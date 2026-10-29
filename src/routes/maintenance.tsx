@@ -12,7 +12,7 @@ export const Route = createFileRoute("/maintenance")({
       { name: "twitter:title", content: "Scheduled Maintenance | VeloRix Tournaments" },
       { name: "twitter:description", content: "VeloRix Tournaments is briefly down for scheduled maintenance." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/maintenance" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/maintenance" }],
   }),
   component: Maintenance,
 });

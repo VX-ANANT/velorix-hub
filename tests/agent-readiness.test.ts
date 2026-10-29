@@ -155,7 +155,7 @@ describe("MCP manifest", () => {
   it("advertises a streamable-http server", () => {
     expect(wellKnown.servers).toHaveLength(1);
     expect(wellKnown.servers[0].transport).toBe("streamable-http");
-    expect(wellKnown.servers[0].url).toBe("https://velorix-hub.vercel.app/mcp");
+    expect(wellKnown.servers[0].url).toBe("https://velorix-esports.tech/mcp");
     expect(wellKnown.whenToUse).toBeTruthy();
   });
 
@@ -211,7 +211,7 @@ describe("OpenAPI specification", () => {
 
   it("is OpenAPI 3.1 with server, contact and external docs", () => {
     expect(spec.openapi).toMatch(/^3\.1/);
-    expect(spec.servers[0].url).toBe("https://velorix-hub.vercel.app/api/v1");
+    expect(spec.servers[0].url).toBe("https://velorix-esports.tech/api/v1");
     expect(spec.info.contact.email).toBeTruthy();
     expect(spec.externalDocs.url).toContain("/developers");
   });

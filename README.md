@@ -3,9 +3,9 @@
 
   <br />
 
-  <a href="https://velorix-hub.vercel.app"><img src="https://img.shields.io/badge/ENTER_THE_ARENA-LIVE-ff214f?style=for-the-badge&labelColor=050505" alt="Open VeloRix" /></a>
-  <a href="https://velorix-hub.vercel.app/download"><img src="https://img.shields.io/badge/ANDROID-DOWNLOAD_APK-ff214f?style=for-the-badge&logo=android&logoColor=white&labelColor=050505" alt="Download VeloRix for Android" /></a>
-  <a href="https://velorix-hub.vercel.app/status"><img src="https://img.shields.io/badge/SYSTEM-LIVE_STATUS-e8e8ec?style=for-the-badge&labelColor=050505" alt="VeloRix system status" /></a>
+  <a href="https://velorix-esports.tech"><img src="https://img.shields.io/badge/ENTER_THE_ARENA-LIVE-ff214f?style=for-the-badge&labelColor=050505" alt="Open VeloRix" /></a>
+  <a href="https://velorix-esports.tech/download"><img src="https://img.shields.io/badge/ANDROID-DOWNLOAD_APK-ff214f?style=for-the-badge&logo=android&logoColor=white&labelColor=050505" alt="Download VeloRix for Android" /></a>
+  <a href="https://velorix-esports.tech/status"><img src="https://img.shields.io/badge/SYSTEM-LIVE_STATUS-e8e8ec?style=for-the-badge&labelColor=050505" alt="VeloRix system status" /></a>
 
   <h3>India's competitive mobile gaming arena.</h3>
   <p>
@@ -14,13 +14,13 @@
   </p>
 
   <p>
-    <a href="https://velorix-hub.vercel.app"><strong>Website</strong></a>
+    <a href="https://velorix-esports.tech"><strong>Website</strong></a>
     &nbsp;•&nbsp;
-    <a href="https://velorix-hub.vercel.app/download"><strong>Get the app</strong></a>
+    <a href="https://velorix-esports.tech/download"><strong>Get the app</strong></a>
     &nbsp;•&nbsp;
-    <a href="https://velorix-hub.vercel.app/blog"><strong>Esports guides</strong></a>
+    <a href="https://velorix-esports.tech/blog"><strong>Esports guides</strong></a>
     &nbsp;•&nbsp;
-    <a href="https://velorix-hub.vercel.app/help"><strong>Help center</strong></a>
+    <a href="https://velorix-esports.tech/help"><strong>Help center</strong></a>
   </p>
 </div>
 
@@ -126,12 +126,12 @@ VeloRix publishes read-only resources for developers, search engines, and compat
 
 | Resource | Link |
 |---|---|
-| Developer center | [`/developers`](https://velorix-hub.vercel.app/developers) |
-| OpenAPI 3.1 | [`/openapi.json`](https://velorix-hub.vercel.app/openapi.json) |
-| MCP endpoint | [`/.well-known/mcp`](https://velorix-hub.vercel.app/.well-known/mcp) |
-| Agent index | [`/llms.txt`](https://velorix-hub.vercel.app/llms.txt) |
-| Service status | [`/status`](https://velorix-hub.vercel.app/status) |
-| Security policy | [`/.well-known/security.txt`](https://velorix-hub.vercel.app/.well-known/security.txt) |
+| Developer center | [`/developers`](https://velorix-esports.tech/developers) |
+| OpenAPI 3.1 | [`/openapi.json`](https://velorix-esports.tech/openapi.json) |
+| MCP endpoint | [`/.well-known/mcp`](https://velorix-esports.tech/.well-known/mcp) |
+| Agent index | [`/llms.txt`](https://velorix-esports.tech/llms.txt) |
+| Service status | [`/status`](https://velorix-esports.tech/status) |
+| Security policy | [`/.well-known/security.txt`](https://velorix-esports.tech/.well-known/security.txt) |
 
 ## Project principles
 
@@ -144,7 +144,7 @@ VeloRix publishes read-only resources for developers, search engines, and compat
 
 ## Connect
 
-- **Website:** [velorix-hub.vercel.app](https://velorix-hub.vercel.app)
+- **Website:** [velorix-esports.tech](https://velorix-esports.tech)
 - **Instagram:** [@velorix_tournaments](https://www.instagram.com/velorix_tournaments)
 - **Support:** [service.veloxyra@gmail.com](mailto:service.veloxyra@gmail.com)
 - **Creator:** [VX-ANANT](https://github.com/VX-ANANT)

@@ -12,7 +12,7 @@ export const Route = createFileRoute("/error/502")({
       { name: "twitter:title", content: "502 Bad Gateway | VeloRix Tournaments" },
       { name: "twitter:description", content: "An upstream service returned an invalid response." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/error/502" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/error/502" }],
   }),
   component: Error502,
 });

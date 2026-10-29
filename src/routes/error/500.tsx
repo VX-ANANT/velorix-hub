@@ -12,7 +12,7 @@ export const Route = createFileRoute("/error/500")({
       { name: "twitter:title", content: "500 Internal Server Error | VeloRix Tournaments" },
       { name: "twitter:description", content: "Something broke on our side. The team has been alerted." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/error/500" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/error/500" }],
   }),
   component: Error500,
 });

@@ -27,7 +27,7 @@ import appCss from "../styles.css?url";
 
 const SPLASH_STORAGE_KEY = "velorix-splash-shown";
 
-const SITE_URL = "https://velorix-hub.vercel.app";
+const SITE_URL = "https://velorix-esports.tech";
 const SITE_TITLE =
   "VeloRix Tournaments - Free Fire, BGMI & Esports Tournament App | Play & Win";
 const SITE_DESCRIPTION =

@@ -11,7 +11,7 @@ export const Route = createFileRoute("/changelog")({
       { name: "twitter:title", content: "Changelog | VeloRix Tournaments" },
       { name: "twitter:description", content: "Every release, fix and feature shipped to the VeloRix Tournaments app and website." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/changelog" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/changelog" }],
   }),
   component: Changelog,
 });

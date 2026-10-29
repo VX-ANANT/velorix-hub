@@ -12,7 +12,7 @@ export const Route = createFileRoute("/error/403")({
       { name: "twitter:title", content: "403 Forbidden | VeloRix Tournaments" },
       { name: "twitter:description", content: "You do not have clearance to access this resource." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/error/403" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/error/403" }],
   }),
   component: Error403,
 });

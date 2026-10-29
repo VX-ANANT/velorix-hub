@@ -23,7 +23,7 @@ Tools exposed:
 VeloRix publishes a read-only REST API described by an OpenAPI 3.1 document.
 
 - OpenAPI specification: [/openapi.json](/openapi.json) (also at [/api/openapi.json](/api/openapi.json))
-- Base URL: `https://velorix-hub.vercel.app/api/v1`
+- Base URL: `https://velorix-esports.tech/api/v1`
 - Authentication: none (public, read-only)
 - Errors: `application/problem+json` with `status` and an `error` object carrying `code`, `message` and `hint`
 
@@ -75,11 +75,11 @@ and an `error` object carrying `code`, `message` and `hint`. Stable codes: `bad_
 
 URL path versioning (`/api/v1`), `X-API-Version` on every response, `Deprecation` + `Sunset` headers with a minimum
 180 day window before a version is removed, and `Link; rel="deprecation-policy"` on every response. Full policy:
-https://velorix-hub.vercel.app/md/versioning.md
+https://velorix-esports.tech/md/versioning.md
 
 ## VeloRix MCP live handshake
 
-`POST` a JSON-RPC 2.0 `initialize` request to https://velorix-hub.vercel.app/.well-known/mcp (or /mcp) for a live
+`POST` a JSON-RPC 2.0 `initialize` request to https://velorix-esports.tech/.well-known/mcp (or /mcp) for a live
 Streamable HTTP handshake. `GET` on the same URL returns the manifest document.
 
 ## Predictable VeloRix developer URLs

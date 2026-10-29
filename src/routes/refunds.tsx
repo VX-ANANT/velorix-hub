@@ -16,7 +16,7 @@ export const Route = createFileRoute("/refunds")({
       { name: "twitter:description", content: DESCRIPTION },
     ],
     links: [
-      { rel: "canonical", href: "https://velorix-hub.vercel.app/refunds" },
+      { rel: "canonical", href: "https://velorix-esports.tech/refunds" },
     ],
   }),
   component: RefundPolicy,

@@ -11,7 +11,7 @@ export const Route = createFileRoute("/about")({
       { name: "twitter:title", content: "About VeloRix Tournaments — Who We Are" },
       { name: "twitter:description", content: "VeloRix Tournaments is an India-based skill-based esports platform for Free Fire, BGMI and other mobile titles. Learn who runs it, how it works and what we stand for." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/about" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/about" }],
   }),
   component: About,
 });

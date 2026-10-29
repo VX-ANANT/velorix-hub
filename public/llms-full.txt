@@ -1,13 +1,13 @@
 # VeloRix Tournaments — Full Content Export
 
-> Complete text of VeloRix editorial guides for AI retrieval. Source: https://velorix-hub.vercel.app
+> Complete text of VeloRix editorial guides for AI retrieval. Source: https://velorix-esports.tech
 
 
 ---
 
 # Free Fire Sensitivity Settings: A Complete Guide for Tournament Players
 
-URL: https://velorix-hub.vercel.app/blog/free-fire-sensitivity-settings-guide
+URL: https://velorix-esports.tech/blog/free-fire-sensitivity-settings-guide
 Published: 2026-07-28 | Author: VeloRix Esports Desk | Topic: Guide
 
 Sensitivity is the single biggest thing separating casual players from tournament finalists. Here is how to build a setup that actually fits your thumbs, your phone and your playstyle.
@@ -74,7 +74,7 @@ Treat all of these as starting points, run the calibration routine on top, and w
 
 # BGMI Tournament Strategy: How Good Squads Think About Rotations
 
-URL: https://velorix-hub.vercel.app/blog/bgmi-tournament-strategy-rotations
+URL: https://velorix-esports.tech/blog/bgmi-tournament-strategy-rotations
 Published: 2026-07-21 | Author: VeloRix Esports Desk | Topic: Strategy
 
 Placement points win tournaments, and placement comes from rotations. A practical breakdown of zone reading, vehicle discipline and the mistakes that eliminate squads in the third circle.
@@ -136,7 +136,7 @@ Keep a simple log across tournaments: map, drop location, circle where you died,
 
 # How Anti-Cheat Works in VeloRix Tournaments
 
-URL: https://velorix-hub.vercel.app/blog/how-anti-cheat-works-in-velorix
+URL: https://velorix-esports.tech/blog/how-anti-cheat-works-in-velorix
 Published: 2026-07-14 | Author: VeloRix Engineering | Topic: Engineering
 
 Cheaters are the fastest way to kill a tournament community. Here is an honest look at the layers we use to catch them, what we can detect, and what we cannot.
@@ -193,7 +193,7 @@ Record your matches when a prize pool is involved. Screen recording costs you al
 
 # A Beginner's Guide to Joining Your First Mobile Esports Tournament
 
-URL: https://velorix-hub.vercel.app/blog/beginners-guide-to-mobile-esports-tournaments
+URL: https://velorix-esports.tech/blog/beginners-guide-to-mobile-esports-tournaments
 Published: 2026-07-07 | Author: VeloRix Esports Desk | Topic: Guide
 
 Never played a competitive lobby before? Here is exactly what happens from registration to results, what to prepare, and how not to embarrass yourself in your first match.
@@ -256,7 +256,7 @@ None of these are skill problems, which is the encouraging part. Fix the logisti
 
 # Optimising a Budget Android Phone for Competitive Gaming
 
-URL: https://velorix-hub.vercel.app/blog/optimising-android-for-competitive-gaming
+URL: https://velorix-esports.tech/blog/optimising-android-for-competitive-gaming
 Published: 2026-06-30 | Author: VeloRix Engineering | Topic: Engineering
 
 You do not need a flagship to compete. A practical, no-nonsense breakdown of the settings that actually improve frame stability on mid-range and older Android devices.
@@ -312,7 +312,7 @@ If the app or site feels slow on your device, tell us which phone and which scre
 
 # Tournament Formats Explained: Points Tables, Brackets and Round Robin
 
-URL: https://velorix-hub.vercel.app/blog/esports-tournament-formats-explained
+URL: https://velorix-esports.tech/blog/esports-tournament-formats-explained
 Published: 2026-06-23 | Author: VeloRix Esports Desk | Topic: Guide
 
 Battle royale points systems, single elimination, double elimination and Swiss — what each format rewards, and which one suits the tournament you want to play or host.
@@ -371,7 +371,7 @@ The best format is the one your players understand before they register. A sligh
 
 # How to Spot a Tournament Scam Before You Pay the Entry Fee
 
-URL: https://velorix-hub.vercel.app/blog/avoiding-tournament-scams
+URL: https://velorix-esports.tech/blog/avoiding-tournament-scams
 Published: 2026-06-16 | Author: VeloRix Community Team | Topic: Community
 
 Fake prize pools, vanishing organisers and rooms that never start. The warning signs every Indian mobile gamer should know before handing over an entry fee.
@@ -424,7 +424,7 @@ If you have been scammed, report the account to the platform it operated on and 
 
 # Building a Competitive Squad That Does Not Fall Apart in Two Weeks
 
-URL: https://velorix-hub.vercel.app/blog/building-a-competitive-squad
+URL: https://velorix-esports.tech/blog/building-a-competitive-squad
 Published: 2026-06-09 | Author: VeloRix Community Team | Topic: Community
 
 Roles, practice structure, handling losses and the uncomfortable conversations. What actually keeps an amateur esports squad together long enough to get good.

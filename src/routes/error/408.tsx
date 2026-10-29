@@ -12,7 +12,7 @@ export const Route = createFileRoute("/error/408")({
       { name: "twitter:title", content: "408 Request Timeout | VeloRix Tournaments" },
       { name: "twitter:description", content: "The request took too long and timed out." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/error/408" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/error/408" }],
   }),
   component: Error408,
 });

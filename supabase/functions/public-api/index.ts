@@ -1,7 +1,7 @@
-// VeloRix public read-only JSON API. Mounted publicly at https://velorix-hub.vercel.app/api/v1/*
+// VeloRix public read-only JSON API. Mounted publicly at https://velorix-esports.tech/api/v1/*
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.105.3";
 
-const SITE = "https://velorix-hub.vercel.app";
+const SITE = "https://velorix-esports.tech";
 const API_VERSION = "v1";
 const VERSION_POLICY = `${SITE}/md/versioning.md`;
 

@@ -11,7 +11,7 @@ export const Route = createFileRoute("/contact")({
       { name: "twitter:title", content: "Contact VeloRix Tournaments | Support & Partnerships" },
       { name: "twitter:description", content: "Reach the VeloRix Tournaments team for player support, payout questions, partnerships and press." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/contact" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/contact" }],
   }),
   component: Contact,
 });

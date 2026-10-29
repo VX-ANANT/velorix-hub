@@ -11,7 +11,7 @@ export const Route = createFileRoute("/terms")({
       { name: "twitter:title", content: "Terms of Service | VeloRix Tournaments" },
       { name: "twitter:description", content: "The rules for using VeloRix Tournaments, tournament participation, payouts and account conduct." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/terms" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/terms" }],
   }),
   component: TermsOfService,
 });

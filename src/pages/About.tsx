@@ -43,7 +43,7 @@ const About = () => {
       "@context": "https://schema.org",
       "@type": "Organization",
       name: "VeloRix Tournaments",
-      url: "https://velorix-hub.vercel.app",
+      url: "https://velorix-esports.tech",
       email: "service.veloxyra@gmail.com",
       description:
         "India-based skill-based esports tournament platform for Free Fire, BGMI and other mobile titles.",

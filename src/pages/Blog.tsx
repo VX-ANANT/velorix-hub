@@ -28,13 +28,13 @@ const Blog = () => {
       "@context": "https://schema.org",
       "@type": "Blog",
       name: "VeloRix Blog",
-      url: "https://velorix-hub.vercel.app/blog",
+      url: "https://velorix-esports.tech/blog",
       blogPost: blogPosts.map((p) => ({
         "@type": "BlogPosting",
         headline: p.title,
         description: p.excerpt,
         datePublished: p.isoDate,
-        url: `https://velorix-hub.vercel.app/blog/${p.slug}`,
+        url: `https://velorix-esports.tech/blog/${p.slug}`,
       })),
     },
   });
