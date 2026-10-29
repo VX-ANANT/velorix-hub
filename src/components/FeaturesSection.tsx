@@ -1,97 +1,74 @@
-import AnimeHeading from "@/components/AnimeHeading";
 import { Shield, Zap, Bell, Award } from "@/lib/icons";
 import { motion } from "framer-motion";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import StarBorder from "@/components/reactbits/StarBorder";
-import GradualBlur from "@/components/reactbits/GradualBlur";
-import ScrollStack, { ScrollStackItem } from "@/components/reactbits/ScrollStack";
-import { useAnimeInView } from "@/hooks/useAnimeInView";
+import IPhoneMockup from "@/components/IPhoneMockup";
+import { appScreens } from "@/data/appScreens";
 
-const features = [
-  {
-    icon: Shield,
-    title: "Fair Play",
-    description:
-      "Server-side room ID validation, emulator bans, and manual screenshot verification to ensure clean competitive integrity.",
-  },
-  {
-    icon: Zap,
-    title: "Low-End Optimization",
-    description:
-      "Lightweight ~25 MB APK engineered to run smoothly on 2GB RAM budget Android smartphones running Android 7.0+.",
-  },
-  {
-    icon: Bell,
-    title: "Match Alerts",
-    description:
-      "Push notifications deliver Free Fire daily room IDs and BGMI match timings before every tournament starts.",
-  },
-  {
-    icon: Award,
-    title: "Quick Payouts",
-    description:
-      "UPI instant payout: verified winnings are sent to your UPI or bank account within 15–30 minutes after results.",
-  },
-];
-
-const FeaturesSection = () => {
-  const { ref, isInView } = useScrollAnimation(0.1);
-  const featureListRef = useAnimeInView<HTMLDivElement>({ delayStep: 85, translateY: 16 });
-
-  return (
-    <section id="features" className="py-24 bg-secondary relative overflow-hidden">
-      {/* Static gradient lines — no animation */}
-      <div className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent)" }} />
-      <div className="absolute inset-0 bg-mesh-gradient opacity-50" />
-      <div className="absolute bottom-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent)" }} />
-
-      <div className="container mx-auto px-4 relative z-10" ref={ref}>
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            <AnimeHeading
-              parts={[
-                { text: "Why " },
-                { text: "VeloRix", className: "text-gradient text-glow" },
-                { text: "?" },
-              ]}
-            />
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            VeloRix is a skill-based BGMI tournament app for India with fair-play checks, budget-phone support, and fast UPI payouts.
-          </p>
-        </motion.div>
-
-        <div ref={featureListRef} className="max-w-2xl mx-auto">
-          <ScrollStack topOffset={100} stagger={16} itemSpacing={48}>
-            {features.map((feature) => (
-              <ScrollStackItem key={feature.title} className="feature-motion-item" data-anime-item>
-                <StarBorder as="div" color="hsl(350 85% 55%)" speed="6s" thickness={1} className="block w-full rounded-2xl">
-                  <div className="liquid-glass p-7 sm:p-8 rounded-2xl group hover:border-primary/30 transition-colors duration-300">
-                    <div className="w-14 h-14 rounded-xl bg-accent/80 flex items-center justify-center mb-5 relative">
-                      <div className="absolute inset-0 bg-primary/20 rounded-xl blur-xl opacity-60" />
-                      <feature.icon className="w-7 h-7 text-primary relative z-10" />
-                    </div>
-                    <h3 className="font-semibold text-xl text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </StarBorder>
-              </ScrollStackItem>
-            ))}
-          </ScrollStack>
-        </div>
-      </div>
-      <GradualBlur target="parent" position="bottom" height="5rem" strength={1.5} divCount={4} opacity={0.8} />
-    </section>
-  );
+const reveal = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
 };
+
+/** Bento grid layout, inspired by 21st.dev bento feature components. */
+const FeaturesSection = () => (
+  <section id="features" className="relative py-24">
+    <div className="container mx-auto px-4">
+      <div className="mx-auto mb-14 max-w-3xl text-center">
+        <span className="vx-eyebrow"><span className="vx-dot" /> Why VeloRix</span>
+        <h2 className="mt-5 font-display text-4xl leading-tight text-foreground sm:text-6xl">
+          Built for grinders, <span className="text-gradient">not for show.</span>
+        </h2>
+        <p className="mt-4 text-muted-foreground sm:text-lg">
+          VeloRix is a skill-based BGMI tournament app for India with fair-play checks, budget-phone support, and fast UPI payouts.
+        </p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-6 md:grid-rows-2">
+        <motion.article {...reveal} className="vx-panel p-7 md:col-span-4 md:row-span-1">
+          <Shield className="h-8 w-8 text-primary" />
+          <h3 className="mt-6 text-2xl font-semibold text-foreground">Fair Play</h3>
+          <p className="mt-2 max-w-md text-muted-foreground">
+            Server-side room ID validation, emulator bans, and manual screenshot verification to ensure clean competitive integrity.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {["Room ID checks", "Emulator bans", "Screenshot review"].map((t) => (
+              <span key={t} className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">{t}</span>
+            ))}
+          </div>
+        </motion.article>
+
+        <motion.article {...reveal} transition={{ ...reveal.transition, delay: 0.08 }} className="vx-panel flex flex-col justify-between p-7 md:col-span-2 md:row-span-2">
+          <div>
+            <Award className="h-8 w-8 text-primary" />
+            <h3 className="mt-6 text-2xl font-semibold text-foreground">Quick Payouts</h3>
+            <p className="mt-2 text-muted-foreground">
+              UPI instant payout: verified winnings are sent to your UPI or bank account within 15–30 minutes after results.
+            </p>
+          </div>
+          <div className="mx-auto mt-8 w-40 translate-y-12">
+            <IPhoneMockup src={appScreens[5].src} alt={appScreens[5].alt} />
+          </div>
+        </motion.article>
+
+        <motion.article {...reveal} transition={{ ...reveal.transition, delay: 0.12 }} className="vx-panel p-7 md:col-span-2">
+          <Zap className="h-8 w-8 text-primary" />
+          <h3 className="mt-6 text-xl font-semibold text-foreground">Low-End Optimization</h3>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Lightweight ~25 MB APK engineered to run smoothly on 2GB RAM budget Android smartphones running Android 7.0+.
+          </p>
+        </motion.article>
+
+        <motion.article {...reveal} transition={{ ...reveal.transition, delay: 0.16 }} className="vx-panel p-7 md:col-span-2">
+          <Bell className="h-8 w-8 text-primary" />
+          <h3 className="mt-6 text-xl font-semibold text-foreground">Match Alerts</h3>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Push notifications deliver Free Fire daily room IDs and BGMI match timings before every tournament starts.
+          </p>
+        </motion.article>
+      </div>
+    </div>
+  </section>
+);
 
 export default FeaturesSection;
