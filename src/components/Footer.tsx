@@ -41,11 +41,20 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="py-16 border-t border-border bg-background relative overflow-hidden">
-      {/* Static ambient glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+    <footer className="pt-20 pb-10 border-t border-border bg-background relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[260px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
+        <div className="vx-panel mb-14 flex flex-col items-center justify-between gap-6 p-8 text-center md:flex-row md:text-left">
+          <div>
+            <p className="font-display text-3xl text-foreground sm:text-4xl">Squad up. <span className="text-gradient">Win daily.</span></p>
+            <p className="mt-2 text-sm text-muted-foreground">Free Fire and BGMI rooms, every single day.</p>
+          </div>
+          <Link to="/download" className="inline-flex h-12 items-center rounded-full bg-primary px-7 font-medium text-primary-foreground shadow-glow transition-transform hover:scale-105">
+            Get the app
+          </Link>
+        </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
             <Link to="/" className="block">
@@ -176,6 +185,7 @@ const Footer = () => {
             Made with passion for gamers
           </p>
         </div>
+        <p className="vx-mega mt-10 text-center" aria-hidden="true">VELORIX</p>
       </div>
     </footer>
   );

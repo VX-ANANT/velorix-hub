@@ -24,24 +24,20 @@ const Index = () => {
         Skip to main content
       </a>
 
-      {/* Lightweight scan lines overlay for techy vibe */}
-      <div className="scan-lines" />
-      
       {/* Global fixed reddish blur at bottom edge */}
       <div className="global-bottom-glow" aria-hidden="true" />
 
       <Navbar />
       <main id="main-content">
         <HeroSection />
+        <Reveal><PartnersRow /></Reveal>
+        <Reveal><FeaturesSection /></Reveal>
         <Reveal><AppGallerySection /></Reveal>
-        <Reveal><StatsSection /></Reveal>
+        <Reveal><HowItWorksSection /></Reveal>
         <Reveal><SocialProofBadges /></Reveal>
         <Reveal><PlayerVoices /></Reveal>
-        <Reveal><PartnersRow /></Reveal>
-        <Reveal><HowItWorksSection /></Reveal>
-        <Reveal><FeaturesSection /></Reveal>
         <Reveal><FAQSection /></Reveal>
-        <Reveal><DownloadCTA /></Reveal>
+        <DownloadCTA />
       </main>
       <Footer />
 
