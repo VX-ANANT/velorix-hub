@@ -47,7 +47,7 @@ const DownloadPage = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground">
-            Download <span className="text-gradient">VeloRix</span>
+            Download VeloRix
           </h1>
           <p className="text-muted-foreground text-lg">
             Choose your preferred download method below.

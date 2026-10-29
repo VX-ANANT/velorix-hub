@@ -50,7 +50,7 @@ const FAQSection = () => {
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             Frequently Asked{" "}
-            <span className="text-gradient text-glow">Questions</span>
+            <span>Questions</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Quick answers on joining BGMI and Free Fire tournaments, entry fees, and UPI payouts.

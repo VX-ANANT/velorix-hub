@@ -60,7 +60,7 @@ const HowItWorksSection = () => {
             <AnimeHeading
               parts={[
                 { text: "How " },
-                { text: "It Works", className: "text-gradient text-glow" },
+                { text: "It Works", className: "" },
               ]}
             />
           </h2>
