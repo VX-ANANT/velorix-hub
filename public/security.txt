@@ -1,11 +1,11 @@
 # VeloRix Tournaments — Security Policy (RFC 9116)
 Contact: mailto:service.veloxyra@gmail.com
-Contact: https://velorix-hub.vercel.app/contact
+Contact: https://velorix-esports.tech/contact
 Expires: 2027-08-31T00:00:00.000Z
 Preferred-Languages: en, hi
-Canonical: https://velorix-hub.vercel.app/.well-known/security.txt
-Policy: https://velorix-hub.vercel.app/terms
-Acknowledgments: https://velorix-hub.vercel.app/crew
+Canonical: https://velorix-esports.tech/.well-known/security.txt
+Policy: https://velorix-esports.tech/terms
+Acknowledgments: https://velorix-esports.tech/crew
 
 # Please report vulnerabilities privately first. Do not run automated
 # load or denial-of-service tests against tournament endpoints.

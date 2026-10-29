@@ -12,7 +12,7 @@ export const Route = createFileRoute("/error/503")({
       { name: "twitter:title", content: "503 Service Unavailable | VeloRix Tournaments" },
       { name: "twitter:description", content: "The service is temporarily unavailable." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/error/503" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/error/503" }],
   }),
   component: Error503,
 });

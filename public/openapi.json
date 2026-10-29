@@ -4,25 +4,25 @@
     "title": "VeloRix Tournaments Public API",
     "version": "1.0.0",
     "summary": "Read-only JSON API for VeloRix Tournaments, an India-focused Free Fire and BGMI mobile esports tournament platform.",
-    "description": "Public, unauthenticated, read-only endpoints exposing VeloRix Tournaments content: published pages (tournaments, announcements, policies), the current Android APK release and live site status.\n\n## Errors\nEvery non-2xx response is `application/problem+json` (RFC 9457) using the `Error` schema: a `type` URI, a machine-readable `title`/`error.code`, the HTTP `status`, a human-readable `error.message` and an actionable `error.hint`. Error codes are enumerated in `Error.error.code`, so agents can branch on them without parsing prose.\n\n## Rate limits\nEvery response carries RFC 9331 style rate-limit headers: `RateLimit-Policy`, `RateLimit`, plus the legacy `X-RateLimit-Limit` / `X-RateLimit-Remaining` / `X-RateLimit-Reset` mirrors. The default policy is 120 requests per 60 second window per client IP. When exhausted the API returns `429` with `Retry-After` (seconds) and the `rate_limited` error code. Agents should self-throttle from `RateLimit` rather than retrying blindly.\n\n## Versioning and deprecation\nThe API is versioned in the URL path (`/api/v1`). Breaking changes ship as a new path segment (`/api/v2`); the previous version stays available for at least 180 days. A version scheduled for removal returns `Deprecation` (RFC 9745) and `Sunset` (RFC 8594) headers on every response, plus a `Link; rel=\"deprecation\"` pointing at the policy at https://velorix-hub.vercel.app/md/versioning.md. Every response also carries `X-API-Version`. Full policy: https://velorix-hub.vercel.app/md/versioning.md",
-    "termsOfService": "https://velorix-hub.vercel.app/terms",
+    "description": "Public, unauthenticated, read-only endpoints exposing VeloRix Tournaments content: published pages (tournaments, announcements, policies), the current Android APK release and live site status.\n\n## Errors\nEvery non-2xx response is `application/problem+json` (RFC 9457) using the `Error` schema: a `type` URI, a machine-readable `title`/`error.code`, the HTTP `status`, a human-readable `error.message` and an actionable `error.hint`. Error codes are enumerated in `Error.error.code`, so agents can branch on them without parsing prose.\n\n## Rate limits\nEvery response carries RFC 9331 style rate-limit headers: `RateLimit-Policy`, `RateLimit`, plus the legacy `X-RateLimit-Limit` / `X-RateLimit-Remaining` / `X-RateLimit-Reset` mirrors. The default policy is 120 requests per 60 second window per client IP. When exhausted the API returns `429` with `Retry-After` (seconds) and the `rate_limited` error code. Agents should self-throttle from `RateLimit` rather than retrying blindly.\n\n## Versioning and deprecation\nThe API is versioned in the URL path (`/api/v1`). Breaking changes ship as a new path segment (`/api/v2`); the previous version stays available for at least 180 days. A version scheduled for removal returns `Deprecation` (RFC 9745) and `Sunset` (RFC 8594) headers on every response, plus a `Link; rel=\"deprecation\"` pointing at the policy at https://velorix-esports.tech/md/versioning.md. Every response also carries `X-API-Version`. Full policy: https://velorix-esports.tech/md/versioning.md",
+    "termsOfService": "https://velorix-esports.tech/terms",
     "contact": {
       "name": "VeloRix Tournaments",
       "email": "service.veloxyra@gmail.com",
-      "url": "https://velorix-hub.vercel.app/developers"
+      "url": "https://velorix-esports.tech/developers"
     },
     "license": {
       "name": "Proprietary — content reusable with attribution",
-      "url": "https://velorix-hub.vercel.app/ai.txt"
+      "url": "https://velorix-esports.tech/ai.txt"
     }
   },
   "externalDocs": {
     "description": "VeloRix developer and agent resources (MCP server, OpenAPI, rate limits, versioning policy)",
-    "url": "https://velorix-hub.vercel.app/developers"
+    "url": "https://velorix-esports.tech/developers"
   },
   "servers": [
     {
-      "url": "https://velorix-hub.vercel.app/api/v1",
+      "url": "https://velorix-esports.tech/api/v1",
       "description": "Production (v1)"
     }
   ],
@@ -36,7 +36,7 @@
       "X-RateLimit-Remaining",
       "X-RateLimit-Reset"
     ],
-    "documentation": "https://velorix-hub.vercel.app/md/versioning.md#rate-limits"
+    "documentation": "https://velorix-esports.tech/md/versioning.md#rate-limits"
   },
   "x-versioning": {
     "scheme": "url-path",
@@ -47,7 +47,7 @@
       "Link"
     ],
     "minimumSupportWindowDays": 180,
-    "policy": "https://velorix-hub.vercel.app/md/versioning.md"
+    "policy": "https://velorix-esports.tech/md/versioning.md"
   },
   "tags": [
     {

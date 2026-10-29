@@ -74,4 +74,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://velorix-hub.vercel.app/sitemap.xml
+Sitemap: https://velorix-esports.tech/sitemap.xml

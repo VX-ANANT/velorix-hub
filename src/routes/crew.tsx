@@ -12,7 +12,7 @@ export const Route = createFileRoute("/crew")({
       { name: "twitter:title", content: "Crew Access | VeloRix Tournaments" },
       { name: "twitter:description", content: "Restricted crew sign-in for the VeloRix Tournaments operations team." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/crew" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/crew" }],
   }),
   component: Crew,
 });

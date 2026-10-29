@@ -99,7 +99,7 @@
         },
         {
           "key": "Link",
-          "value": "<https://velorix-hub.vercel.app/md/versioning.md>; rel=\"deprecation-policy\", <https://velorix-hub.vercel.app/openapi.json>; rel=\"service-desc\", <https://velorix-hub.vercel.app/.well-known/api-catalog>; rel=\"api-catalog\", <https://velorix-hub.vercel.app/llms.txt>; rel=\"help\""
+          "value": "<https://velorix-esports.tech/md/versioning.md>; rel=\"deprecation-policy\", <https://velorix-esports.tech/openapi.json>; rel=\"service-desc\", <https://velorix-esports.tech/.well-known/api-catalog>; rel=\"api-catalog\", <https://velorix-esports.tech/llms.txt>; rel=\"help\""
         },
         {
           "key": "Access-Control-Expose-Headers",

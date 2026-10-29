@@ -11,7 +11,7 @@ export const Route = createFileRoute("/download")({
       { name: "twitter:title", content: "Download the VeloRix Tournaments App (Free APK) | Android" },
       { name: "twitter:description", content: "Download the free VeloRix Tournaments Android app and join daily Free Fire and BGMI tournaments with real cash prizes." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/download" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/download" }],
   }),
   component: DownloadPage,
 });

@@ -1,10 +1,10 @@
 # VeloRix Tournaments API — rate limits, versioning and deprecation policy
 
-Applies to the VeloRix Tournaments public REST API (`https://velorix-hub.vercel.app/api/v1`),
-described by the OpenAPI 3.1 document at <https://velorix-hub.vercel.app/openapi.json>,
-and to the VeloRix MCP server at <https://velorix-hub.vercel.app/mcp>.
+Applies to the VeloRix Tournaments public REST API (`https://velorix-esports.tech/api/v1`),
+described by the OpenAPI 3.1 document at <https://velorix-esports.tech/openapi.json>,
+and to the VeloRix MCP server at <https://velorix-esports.tech/mcp>.
 
-Contact: service.veloxyra@gmail.com · Developer index: <https://velorix-hub.vercel.app/developers>
+Contact: service.veloxyra@gmail.com · Developer index: <https://velorix-esports.tech/developers>
 
 ## Rate limits
 
@@ -33,7 +33,7 @@ Every non-2xx response is an RFC 9457 problem document with `Content-Type: appli
 
 ```json
 {
-  "type": "https://velorix-hub.vercel.app/developers#page_not_found",
+  "type": "https://velorix-esports.tech/developers#page_not_found",
   "title": "page_not_found",
   "status": 404,
   "detail": "No published page exists with slug 'nope'.",
@@ -77,7 +77,7 @@ The full enum is published in the OpenAPI document under `components.schemas.Err
   the affected version:
   - `Deprecation: @<unix-timestamp>` (RFC 9745) — when the version became deprecated.
   - `Sunset: <HTTP-date>` (RFC 8594) — when the version stops responding.
-  - `Link: <https://velorix-hub.vercel.app/md/versioning.md>; rel="deprecation-policy"` — this page,
+  - `Link: <https://velorix-esports.tech/md/versioning.md>; rel="deprecation-policy"` — this page,
     present on every response at all times.
 - **Minimum support window: 180 days** between the `Deprecation` announcement and the `Sunset` date.
 - After the sunset date the version returns `410 Gone` with the `endpoint_not_found` error code and a
@@ -89,5 +89,5 @@ The full enum is published in the OpenAPI document under `components.schemas.Err
 
 The MCP server (`/mcp`, Streamable HTTP, JSON-RPC 2.0, no auth) follows the same policy: tool names
 and input schemas are additive within a protocol version, tool removals are announced here with the
-same 180 day window. The handshake document is at <https://velorix-hub.vercel.app/.well-known/mcp>
+same 180 day window. The handshake document is at <https://velorix-esports.tech/.well-known/mcp>
 (`GET` returns the manifest, `POST` is proxied to the live MCP endpoint).

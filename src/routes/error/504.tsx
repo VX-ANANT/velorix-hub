@@ -12,7 +12,7 @@ export const Route = createFileRoute("/error/504")({
       { name: "twitter:title", content: "504 Gateway Timeout | VeloRix Tournaments" },
       { name: "twitter:description", content: "An upstream service took too long to respond." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/error/504" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/error/504" }],
   }),
   component: Error504,
 });

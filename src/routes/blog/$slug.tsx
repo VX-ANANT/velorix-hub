@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import BlogPost from "@/pages/BlogPost";
 import { blogPosts } from "@/data/blogPosts";
 
-const SITE = "https://velorix-hub.vercel.app";
+const SITE = "https://velorix-esports.tech";
 
 export const Route = createFileRoute("/blog/$slug")({
   head: ({ params }) => {

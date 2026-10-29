@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from "react";
  * injects its official badge, we swap to it automatically.
  */
 const PREFERRED_SOURCE_DEEPLINK =
-  "https://www.google.com/preferences/source?q=velorix-hub.vercel.app";
+  "https://www.google.com/preferences/source?q=velorix-esports.tech";
 
 const GoogleGIcon = () => (
   <svg

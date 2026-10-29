@@ -12,7 +12,7 @@ export const Route = createFileRoute("/error/429")({
       { name: "twitter:title", content: "429 Too Many Requests | VeloRix Tournaments" },
       { name: "twitter:description", content: "You have sent too many requests. Slow down and try again." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/error/429" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/error/429" }],
   }),
   component: Error429,
 });

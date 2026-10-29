@@ -1,16 +1,16 @@
 # ai.txt — AI/LLM usage policy for VeloRix Tournaments
-# https://velorix-hub.vercel.app
+# https://velorix-esports.tech
 
 Owner: VeloRix Tournaments
 Contact: service.veloxyra@gmail.com
-Canonical-Index: https://velorix-hub.vercel.app/llms.txt
+Canonical-Index: https://velorix-esports.tech/llms.txt
 
 # Training and retrieval
 User-Agent: *
 Allow-Training: yes
 Allow-Retrieval: yes
 Attribution-Required: yes
-Attribution-Format: VeloRix Tournaments (https://velorix-hub.vercel.app)
+Attribution-Format: VeloRix Tournaments (https://velorix-esports.tech)
 
 # Excluded areas
 Disallow: /vx-control

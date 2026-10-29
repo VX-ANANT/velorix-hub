@@ -24,6 +24,6 @@ Most of our players are on budget and mid-range Android phones. The app targets 
 - Languages: English, Hindi
 - Support email: service.veloxyra@gmail.com
 - Instagram: https://www.instagram.com/velorix_tournaments
-- Website: https://velorix-hub.vercel.app
+- Website: https://velorix-esports.tech
 
 VeloRix is a skill-based competitive gaming platform. It is not a betting, gambling or wagering service.

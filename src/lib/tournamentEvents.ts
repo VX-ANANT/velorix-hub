@@ -1,4 +1,4 @@
-const SITE_URL = "https://velorix-hub.vercel.app";
+const SITE_URL = "https://velorix-esports.tech";
 
 type TournamentTemplate = {
   slug: string;

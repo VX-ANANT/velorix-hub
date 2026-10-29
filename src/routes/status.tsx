@@ -11,7 +11,7 @@ export const Route = createFileRoute("/status")({
       { name: "twitter:title", content: "Service Status | VeloRix Tournaments" },
       { name: "twitter:description", content: "Live health of the VeloRix Tournaments app, API, database and downloads." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/status" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/status" }],
   }),
   component: StatusPage,
 });

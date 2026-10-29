@@ -12,7 +12,7 @@ export const Route = createFileRoute("/vx-control")({
       { name: "twitter:title", content: "Control Room | VeloRix Tournaments" },
       { name: "twitter:description", content: "Internal VeloRix Tournaments control room." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/vx-control" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/vx-control" }],
   }),
   component: AdminPanel,
 });

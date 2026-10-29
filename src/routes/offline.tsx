@@ -12,7 +12,7 @@ export const Route = createFileRoute("/offline")({
       { name: "twitter:title", content: "You're Offline | VeloRix Tournaments" },
       { name: "twitter:description", content: "No internet connection detected. Reconnect to continue." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/offline" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/offline" }],
   }),
   component: Offline,
 });

@@ -11,7 +11,7 @@ export const Route = createFileRoute("/privacy")({
       { name: "twitter:title", content: "Privacy Policy | VeloRix Tournaments" },
       { name: "twitter:description", content: "How VeloRix Tournaments collects, uses and protects your data across the app and website." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/privacy" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/privacy" }],
   }),
   component: PrivacyPolicy,
 });

@@ -11,7 +11,7 @@ export const Route = createFileRoute("/cookies")({
       { name: "twitter:title", content: "Cookie Policy | VeloRix Tournaments" },
       { name: "twitter:description", content: "Which cookies VeloRix Tournaments uses, what they do and how to control them." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/cookies" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/cookies" }],
   }),
   component: CookiePolicy,
 });

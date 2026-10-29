@@ -12,7 +12,7 @@ export const Route = createFileRoute("/error/400")({
       { name: "twitter:title", content: "400 Bad Request | VeloRix Tournaments" },
       { name: "twitter:description", content: "The request could not be understood by the server." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/error/400" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/error/400" }],
   }),
   component: Error400,
 });

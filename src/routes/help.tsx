@@ -11,7 +11,7 @@ export const Route = createFileRoute("/help")({
       { name: "twitter:title", content: "Help Center | VeloRix Tournaments" },
       { name: "twitter:description", content: "Answers on joining Free Fire and BGMI tournaments, payouts, anti-cheat, bans and app installs." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/help" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/help" }],
   }),
   component: HelpCenter,
 });

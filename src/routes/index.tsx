@@ -26,12 +26,12 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://velorix-hub.vercel.app/" },
+      { property: "og:url", content: "https://velorix-esports.tech/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/" }],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqJsonLd) },
       {

@@ -89,7 +89,7 @@ const BlogPost = () => {
           "@graph": [
             {
               "@type": "Article",
-              "@id": `https://velorix-hub.vercel.app/blog/${post.slug}#article`,
+              "@id": `https://velorix-esports.tech/blog/${post.slug}#article`,
               headline: post.title,
               description: post.excerpt,
               articleSection: post.tag,
@@ -98,17 +98,17 @@ const BlogPost = () => {
               wordCount: plainText.split(/\s+/).length,
               inLanguage: "en-IN",
               keywords: ["free fire tournament", "BGMI tournament", "mobile esports", post.tag.toLowerCase()],
-              author: { "@type": "Organization", name: post.author, url: "https://velorix-hub.vercel.app/about" },
+              author: { "@type": "Organization", name: post.author, url: "https://velorix-esports.tech/about" },
               publisher: {
                 "@type": "Organization",
                 name: "VeloRix Tournaments",
-                url: "https://velorix-hub.vercel.app",
+                url: "https://velorix-esports.tech",
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://velorix-hub.vercel.app/velorix-favicon.png",
+                  url: "https://velorix-esports.tech/velorix-favicon.png",
                 },
               },
-              mainEntityOfPage: `https://velorix-hub.vercel.app/blog/${post.slug}`,
+              mainEntityOfPage: `https://velorix-esports.tech/blog/${post.slug}`,
               speakable: {
                 "@type": "SpeakableSpecification",
                 cssSelector: ["h1", "article p"],
@@ -117,8 +117,8 @@ const BlogPost = () => {
             {
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://velorix-hub.vercel.app/" },
-                { "@type": "ListItem", position: 2, name: "Blog", item: "https://velorix-hub.vercel.app/blog" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://velorix-esports.tech/" },
+                { "@type": "ListItem", position: 2, name: "Blog", item: "https://velorix-esports.tech/blog" },
                 { "@type": "ListItem", position: 3, name: post.title },
               ],
             },

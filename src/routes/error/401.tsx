@@ -12,7 +12,7 @@ export const Route = createFileRoute("/error/401")({
       { name: "twitter:title", content: "401 Unauthorized | VeloRix Tournaments" },
       { name: "twitter:description", content: "Authentication is required to view this resource." },
     ],
-    links: [{ rel: "canonical", href: "https://velorix-hub.vercel.app/error/401" }],
+    links: [{ rel: "canonical", href: "https://velorix-esports.tech/error/401" }],
   }),
   component: Error401,
 });

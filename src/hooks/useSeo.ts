@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const BASE_URL = "https://velorix-hub.vercel.app";
+const BASE_URL = "https://velorix-esports.tech";
 
 type SeoOptions = {
   title: string;
