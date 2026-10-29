@@ -6,7 +6,8 @@ import { useNavigate } from "@/lib/router-compat";
 import { playDownloadSound } from "@/hooks/useSoundEffect";
 import GradientText from "@/components/reactbits/GradientText";
 import Aurora from "@/components/reactbits/Aurora";
-import appPreview from "@/assets/gallery-1.png";
+import IPhoneMockup from "@/components/IPhoneMockup";
+import { appScreens } from "@/data/appScreens";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -217,15 +218,18 @@ const HeroSection = () => {
               </span>
               <span>VX / 01</span>
             </div>
-            <div className="hero-arena-screen">
-              <img
-                src={appPreview}
-                alt="VeloRix tournament app showing upcoming events, matches and a live bracket"
-                width={1024}
-                height={768}
-                fetchPriority="high"
+            <div className="hero-phone-stage">
+              <IPhoneMockup
+                src={appScreens[5].src}
+                alt={appScreens[5].alt}
+                className="hero-phone hero-phone-back"
               />
-              <div className="hero-arena-scan" aria-hidden="true" />
+              <IPhoneMockup
+                src={appScreens[0].src}
+                alt={appScreens[0].alt}
+                className="hero-phone hero-phone-front"
+                priority
+              />
             </div>
             <div className="hero-arena-footer">
               <span><ShieldCheck className="h-4 w-4 text-primary" /> Verified matches</span>
