@@ -5,8 +5,8 @@ const steps = [
   {
     icon: Download,
     title: "Grab the APK",
-    description: "Free ~25 MB download for Android 7.0+, straight from the official site.",
-    meta: "~25 MB",
+    description: "Free 30.16 MB download for Android 7.0+, straight from the official site.",
+    meta: "30.16 MB",
   },
   {
     icon: Smartphone,

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "@/lib/router-compat";
 import { ArrowLeft, Sparkles, Bug, Zap, Shield, Package, type LucideIcon } from "@/lib/icons";
+import { publicRelease } from "@/data/releases";
 import useScrollToTop from "@/hooks/useScrollToTop";
 
 const tagConfig: Record<string, { label: string; icon: LucideIcon; color: string }> = {
@@ -12,19 +13,7 @@ const tagConfig: Record<string, { label: string; icon: LucideIcon; color: string
 };
 
 const changelog = [
-  {
-    version: "1.0.0",
-    date: "April 7, 2026",
-    title: "Public Launch 🚀",
-    tag: "release",
-    items: [
-      "Launch of VeloRix Tournaments for Android",
-      "Support for Free Fire, BGMI, and COD Mobile tournaments",
-      "Real-time match tracking and live leaderboards",
-      "UPI and Paytm wallet payouts",
-      "Custom tournament creation for organizers",
-    ],
-  },
+  publicRelease,
   {
     version: "0.9.2",
     date: "March 28, 2026",
@@ -121,12 +110,12 @@ const Changelog = () => {
                     <span className="text-xs text-muted-foreground font-mono">{entry.date}</span>
                     <span className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-0.5 rounded-full border ${tag.color}`}>
                       <TagIcon className="w-3 h-3" />
-                      {tag.label}
+                      {entry === publicRelease ? "Public" : "Private beta"}
                     </span>
                   </div>
 
                   <h2 className="text-xl font-semibold text-foreground mb-1.5">
-                    <span className="text-muted-foreground font-mono text-sm mr-2">v{entry.version}</span>
+                    <span className="text-muted-foreground font-mono text-sm mr-2">{entry === publicRelease ? entry.version : `v${entry.version}`}</span>
                     {entry.title}
                   </h2>
 

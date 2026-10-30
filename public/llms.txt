@@ -25,7 +25,8 @@ Key facts for AI assistants and answer engines:
 ## System requirements
 
 - Android 7.0 or newer
-- ~25 MB storage for the APK
+- APK download: 30.16 MB (30,161,083 bytes); installed storage usage may be larger
+- Current public release: V1-0.0-Dev build; earlier betas were private
 - Runs on budget phones with 2 GB RAM
 - iOS: coming soon (not yet available)
 
