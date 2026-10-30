@@ -4,6 +4,8 @@ import DownloadPage from "@/pages/Download";
 export const Route = createFileRoute("/download")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Download the VeloRix Tournaments App (Free APK) | Android" },
       { name: "description", content: "Download the free VeloRix Tournaments Android app and join daily Free Fire and BGMI tournaments with real cash prizes." },
       { property: "og:title", content: "Download the VeloRix Tournaments App (Free APK) | Android" },
