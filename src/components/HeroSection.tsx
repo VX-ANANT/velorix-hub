@@ -71,7 +71,7 @@ const HeroSection = () => {
               </span>
               Live
             </span>
-            Rooms open daily across India
+            <span className="sm:hidden">Rooms open daily</span><span className="hidden sm:inline">Rooms open daily across India</span>
             <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
           </motion.a>
 
