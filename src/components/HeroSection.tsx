@@ -7,6 +7,7 @@ import { playDownloadSound } from "@/hooks/useSoundEffect";
 import Aurora from "@/components/reactbits/Aurora";
 import IPhoneMockup from "@/components/IPhoneMockup";
 import { appScreens } from "@/data/appScreens";
+import { publicRelease } from "@/data/releases";
 
 const stats = [
   { value: "4,24,000+", label: "Players" },
@@ -51,7 +52,6 @@ const HeroSection = () => {
       {/* Spotlight beam */}
       <motion.div style={{ y: p(beamY) }} aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[720px]">
         <div className="absolute left-1/2 top-[-120px] h-[520px] w-[720px] max-w-[140vw] -translate-x-1/2 rounded-[50%] bg-primary/25 blur-[120px]" />
-        <div className="absolute left-1/2 top-0 h-[460px] w-px -translate-x-1/2 bg-gradient-to-b from-primary/70 via-primary/20 to-transparent" />
       </motion.div>
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
@@ -94,7 +94,7 @@ const HeroSection = () => {
             className="mx-auto mt-5 max-w-[19rem] text-pretty text-[0.9rem] leading-6 text-muted-foreground sm:max-w-xl sm:text-lg sm:leading-7"
           >
             Daily BGMI and Free Fire rooms, skill-based cash prizes, and instant UPI payouts.
-            <span className="hidden sm:inline"> Free on Android 7.0+, ~25 MB, built for budget phones.</span>
+            <span className="hidden sm:inline"> Free on Android 7.0+, {publicRelease.sizeLabel}, built for budget phones.</span>
           </motion.p>
 
           <motion.div
@@ -114,7 +114,7 @@ const HeroSection = () => {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </motion.div>
-          <p className="mt-3 text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground/70">Free · Android 7.0+ · ~25 MB</p>
+          <p className="mt-3 text-xs text-muted-foreground">Free · Android 7.0+ · {publicRelease.sizeLabel}</p>
         </motion.div>
 
         {/* Device stage */}
