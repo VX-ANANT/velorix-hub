@@ -71,7 +71,7 @@ const mobileApplicationJsonLd = {
     availability: "https://schema.org/InStock",
   },
   downloadUrl: `${SITE_URL}/download`,
-  fileSize: "25MB",
+  fileSize: "30.16 MB",
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.5",

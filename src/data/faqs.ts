@@ -8,7 +8,7 @@ export const faqs = [
   {
     question: "How do I join a tournament?",
     answer:
-      "Download the ~25 MB APK, create an account, pick a Free Fire or BGMI match and register. The room ID and password arrive in the app before match time, and you get a notification before it starts.",
+      "Download the 30.16 MB APK, create an account, pick a Free Fire or BGMI match and register. The room ID and password arrive in the app before match time, and you get a notification before it starts.",
   },
   {
     question: "Is the app free?",

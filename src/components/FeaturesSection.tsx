@@ -55,7 +55,7 @@ const FeaturesSection = () => (
           <Zap className="h-8 w-8 text-primary" />
           <h3 className="mt-6 text-xl font-semibold text-foreground">Low-End Optimization</h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            Lightweight ~25 MB APK engineered to run smoothly on 2GB RAM budget Android smartphones running Android 7.0+.
+            Lightweight 30.16 MB APK engineered to run smoothly on 2GB RAM budget Android smartphones running Android 7.0+.
           </p>
         </motion.article>
 
