@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/__l5e/assets-v1/:path*",
+      "destination": "https://velorix-hub.lovable.app/__l5e/assets-v1/:path*"
+    },
+    {
       "source": "/api",
       "destination": "https://pvzoeafqfkwfgiiflaol.supabase.co/functions/v1/public-api"
     },
