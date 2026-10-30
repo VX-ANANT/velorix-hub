@@ -79,40 +79,42 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
-            className="mx-auto mt-5 max-w-5xl font-display text-[2.9rem] leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-8xl"
+            className="mx-auto mt-6 max-w-4xl text-balance font-display text-[2.6rem] leading-[1] tracking-[-0.02em] sm:text-7xl lg:text-[5.5rem]"
           >
-            Drop in. Clutch up.
-            <br />
-            <span className="text-gradient text-glow">Get paid.</span>
+            <span className="block text-foreground">Drop in. Clutch up.</span>
+            <span className="block text-muted-foreground/70">
+              Get paid<span className="text-primary">.</span>
+            </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.25 }}
-            className="mx-auto mt-5 max-w-xl text-sm leading-6 text-muted-foreground sm:text-lg sm:leading-7"
+            className="mx-auto mt-5 max-w-[19rem] text-pretty text-[0.9rem] leading-6 text-muted-foreground sm:max-w-xl sm:text-lg sm:leading-7"
           >
-            VeloRix is a free BGMI and Free Fire tournament app for India: daily custom rooms,
-            skill-based cash prizes, and UPI payouts on Android 7.0+. ~25 MB, built for budget phones.
+            Daily BGMI and Free Fire rooms, skill-based cash prizes, and instant UPI payouts.
+            <span className="hidden sm:inline"> Free on Android 7.0+, ~25 MB, built for budget phones.</span>
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.35 }}
-            className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            className="mt-7 flex flex-row items-center justify-center gap-2.5"
           >
-            <AnimatedButton variant="hero" size="xl" className="pulse-glow rounded-full px-8" onClick={handleDownload}>
-              <Download className="h-5 w-5" /> Download for Android
+            <AnimatedButton variant="hero" className="h-11 rounded-full px-5 text-sm sm:h-12 sm:px-7" onClick={handleDownload}>
+              <Download className="h-4 w-4" /> Download APK
             </AnimatedButton>
             <a
               href="#how-it-works"
-              className="group inline-flex h-12 items-center gap-2 rounded-full border border-border bg-background/40 px-7 text-sm font-medium text-foreground backdrop-blur transition-colors hover:border-primary/60"
+              className="group inline-flex h-11 items-center gap-1.5 rounded-full border border-border bg-background/40 px-5 text-sm font-medium text-foreground backdrop-blur transition-colors hover:border-primary/60 sm:h-12 sm:px-7"
             >
               How it works
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </motion.div>
+          <p className="mt-3 text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground/70">Free · Android 7.0+ · ~25 MB</p>
         </motion.div>
 
         {/* Device stage */}
