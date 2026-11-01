@@ -93,7 +93,7 @@ const organizationJsonLd = {
     width: 512,
     height: 512,
   },
-  image: `${SITE_URL}/og-image.png`,
+  image: `${SITE_URL}/og-image.jpg`,
   description:
     "India-focused mobile esports tournament platform for Free Fire, BGMI and Call of Duty Mobile. Skill-based tournaments with real cash prizes.",
   email: "service.veloxyra@gmail.com",
