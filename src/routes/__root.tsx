@@ -34,7 +34,7 @@ const SITE_TITLE =
 const SITE_DESCRIPTION =
   "Join VeloRix Tournaments - India's best Free Fire, BGMI & esports tournament app. Compete in daily Free Fire tournaments, win real cash prizes, and climb the leaderboard. Download free!";
 const OG_IMAGE =
-  "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/efb86e98-8388-4987-9dcd-0586104a044f";
+  "https://velorix-esports.tech/og-image.jpg";
 
 const GTM_ID = "GTM-T9XSDVX6";
 
@@ -93,7 +93,7 @@ const organizationJsonLd = {
     width: 512,
     height: 512,
   },
-  image: `${SITE_URL}/og-image.png`,
+  image: `${SITE_URL}/og-image.jpg`,
   description:
     "India-focused mobile esports tournament platform for Free Fire, BGMI and Call of Duty Mobile. Skill-based tournaments with real cash prizes.",
   email: "service.veloxyra@gmail.com",
@@ -355,7 +355,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "640" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@VeloRix" },
       { name: "twitter:title", content: SITE_TITLE },
@@ -368,7 +368,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "apple-touch-icon",
         sizes: "180x180",
-        href: "/velorix-favicon.png",
+        href: "/apple-touch-icon.png",
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
