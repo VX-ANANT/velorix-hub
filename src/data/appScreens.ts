@@ -4,7 +4,7 @@ import s3 from "@/assets/app/app-3.webp.asset.json";
 import s4 from "@/assets/app/app-4.webp.asset.json";
 import s5 from "@/assets/app/app-5.webp.asset.json";
 import s6 from "@/assets/app/app-6.webp.asset.json";
-import s7 from "@/assets/app/app-7.webp.asset.json";
+import s7 from "@/assets/app/app-wallet.webp.asset.json";
 import s8 from "@/assets/app/app-8.webp.asset.json";
 import s9 from "@/assets/app/app-9.webp.asset.json";
 import s10 from "@/assets/app/app-10.webp.asset.json";
@@ -15,7 +15,7 @@ export const appScreens = [
   { src: s4.url, title: "Match Details", alt: "Match details showing live lobby capacity and joined players" },
   { src: s5.url, title: "Prize Pool", alt: "Prize distribution chart and standing payouts for a match" },
   { src: s6.url, title: "My Matches", alt: "My Matches screen listing upcoming enrolled tournaments" },
-  { src: s7.url, title: "Wallet", alt: "VeloRix wallet with balance, winnings and quick add funds" },
+  { src: s7.url, title: "Wallet", alt: "VeloRix wallet with a copper-glow balance card, quick actions and instant UPI top-up amounts" },
   { src: s8.url, title: "Rewards", alt: "Token exchange and squad referral rewards" },
   { src: s9.url, title: "Profile", alt: "Profile screen with esports passport and level progress" },
   { src: s10.url, title: "About", alt: "About screen with creator details and legal links" },
