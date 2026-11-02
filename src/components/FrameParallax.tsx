@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const modules = import.meta.glob("@/assets/frames/*.asset.json", { eager: true }) as Record<
   string,
@@ -8,29 +8,34 @@ const frames = Object.keys(modules)
   .sort()
   .map((k) => modules[k].default.url);
 
-const rowA = frames.slice(0, 6);
-const rowB = frames.slice(6);
+const beats = [
+  { at: 0, title: "Lobby fills up.", body: "Room ID drops, squads lock in." },
+  { at: 0.34, title: "Zone closes in.", body: "Every fight counts toward the prize pool." },
+  { at: 0.67, title: "Last squad standing.", body: "Result verified, cash on its way to UPI." },
+];
 
-/** Two rows of frames that slide in opposite directions as you scroll. Transform-only, rAF-throttled. */
+/** Pinned full-screen section that swaps frames as you scroll, so it plays like a video. */
 const FrameParallax = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const aRef = useRef<HTMLDivElement>(null);
-  const bRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLElement>(null);
+  const [idx, setIdx] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    frames.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let raf = 0;
     const update = () => {
       raf = 0;
-      const el = sectionRef.current;
+      const el = trackRef.current;
       if (!el) return;
       const r = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      if (r.bottom < 0 || r.top > vh) return;
-      const p = (vh - r.top) / (vh + r.height); // 0..1
-      const shift = (p - 0.5) * 40; // percent of row width/3
-      if (aRef.current) aRef.current.style.transform = `translate3d(${-15 + shift * 0.6}%,0,0)`;
-      if (bRef.current) bRef.current.style.transform = `translate3d(${-15 - shift * 0.6}%,0,0)`;
+      const total = r.height - window.innerHeight;
+      const p = Math.min(1, Math.max(0, -r.top / (total || 1)));
+      setProgress(p);
+      setIdx(Math.min(frames.length - 1, Math.floor(p * frames.length)));
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -45,39 +50,42 @@ const FrameParallax = () => {
     };
   }, []);
 
-  const Row = ({ items, innerRef }: { items: string[]; innerRef: React.RefObject<HTMLDivElement | null> }) => (
-    <div
-      ref={innerRef}
-      className="flex gap-3 md:gap-5 w-max will-change-transform"
-      style={{ transform: "translate3d(-15%,0,0)" }}
-    >
-      {[...items, ...items].map((src, i) => (
-        <div
-          key={i}
-          className="relative w-[58vw] sm:w-[40vw] md:w-[26vw] aspect-[3/2] shrink-0 overflow-hidden rounded-xl border border-border/40 bg-muted"
-        >
-          <img src={src} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
-        </div>
-      ))}
-    </div>
-  );
+  const beat = [...beats].reverse().find((b) => progress >= b.at) ?? beats[0];
 
   return (
-    <section ref={sectionRef} aria-labelledby="frames-heading" className="relative py-20 md:py-28 overflow-hidden">
-      <div className="container mx-auto px-4 mb-10 md:mb-14">
-        <h2 id="frames-heading" className="font-display text-3xl md:text-5xl text-foreground">
-          Built to look this sharp.
-        </h2>
-        <p className="mt-3 max-w-xl text-muted-foreground">
-          Every screen, every motion, made to feel fast on any phone.
-        </p>
+    <section ref={trackRef} aria-labelledby="frames-heading" className="relative h-[300vh]">
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-background">
+        {frames.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            aria-hidden="true"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ opacity: i === idx ? 1 : 0 }}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-background/70" />
+
+        <div className="relative z-10 flex h-full flex-col justify-between px-5 pb-12 pt-24 md:px-12">
+          <div className="flex items-center justify-between text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground">
+            <span>Match replay</span>
+            <span className="font-mono">
+              {String(idx + 1).padStart(2, "0")} / {String(frames.length).padStart(2, "0")}
+            </span>
+          </div>
+          <div className="max-w-2xl">
+            <h2 id="frames-heading" key={beat.title} className="animate-fade-in font-display text-4xl leading-none text-foreground md:text-7xl">
+              {beat.title}
+            </h2>
+            <p className="mt-3 text-muted-foreground md:text-lg">{beat.body}</p>
+            <div className="mt-6 h-0.5 w-full max-w-sm overflow-hidden rounded-full bg-border">
+              <div className="h-full origin-left bg-primary" style={{ transform: `scaleX(${progress})` }} />
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="flex flex-col gap-3 md:gap-5" aria-hidden="true">
-        <Row items={rowA} innerRef={aRef} />
-        <Row items={rowB} innerRef={bRef} />
-      </div>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent" />
     </section>
   );
 };

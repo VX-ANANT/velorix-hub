@@ -55,105 +55,95 @@ const HeroSection = () => {
       </motion.div>
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
-      <div className="container relative z-10 mx-auto px-4 text-center">
-        <motion.div style={{ y: p(textY), opacity: p(textFade) }}>
-          <motion.a
-            href="#how-it-works"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease }}
-            className="group mx-auto inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/60 py-1 pl-1 pr-3 text-xs text-muted-foreground backdrop-blur transition-colors hover:border-primary/60"
-          >
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-2 py-0.5 font-semibold uppercase tracking-wider text-primary-foreground">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-foreground opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-foreground" />
-              </span>
-              Live
+      <div className="container relative z-10 mx-auto px-4">
+        <motion.a
+          href="#how-it-works"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease }}
+          className="group mx-auto flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-background/60 py-1 pl-1 pr-3 text-xs text-muted-foreground backdrop-blur transition-colors hover:border-primary/60"
+        >
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-2 py-0.5 font-semibold uppercase tracking-wider text-primary-foreground">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-foreground opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-foreground" />
             </span>
-            <span className="sm:hidden">Rooms open daily</span><span className="hidden sm:inline">Rooms open daily across India</span>
-            <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-          </motion.a>
+            Live
+          </span>
+          Rooms open daily across India
+          <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+        </motion.a>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.8, ease, delay: 0.1 }}
-            className="mx-auto mt-6 max-w-4xl text-balance font-display text-[2.6rem] leading-[1] tracking-[-0.02em] sm:text-7xl lg:text-[5.5rem]"
-          >
-            <span className="block text-foreground">Drop in. Clutch up.</span>
-            <span className="block text-muted-foreground/70">
-              Get paid<span className="text-primary">.</span>
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.25 }}
-            className="mx-auto mt-5 max-w-[19rem] text-pretty text-[0.9rem] leading-6 text-muted-foreground sm:max-w-xl sm:text-lg sm:leading-7"
-          >
-            Daily BGMI and Free Fire rooms, skill-based cash prizes, and instant UPI payouts.
-            <span className="hidden sm:inline"> Free on Android 7.0+, {publicRelease.sizeLabel}, built for budget phones.</span>
-          </motion.p>
-
+        {/* Split stage: headline left, phone center, headline right */}
+        <div className="relative mt-8 grid items-center gap-8 lg:mt-12 lg:grid-cols-[1fr_auto_1fr] lg:gap-10">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.35 }}
-            className="mt-7 flex flex-row items-center justify-center gap-2.5"
+            style={{ y: p(textY), opacity: p(textFade) }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease, delay: 0.1 }}
+            className="text-center lg:text-right"
           >
-            <AnimatedButton variant="hero" className="h-11 rounded-full px-5 text-sm sm:h-12 sm:px-7" onClick={handleDownload}>
-              <Download className="h-4 w-4" /> Download APK
-            </AnimatedButton>
-            <a
-              href="#how-it-works"
-              className="group inline-flex h-11 items-center gap-1.5 rounded-full border border-border bg-background/40 px-5 text-sm font-medium text-foreground backdrop-blur transition-colors hover:border-primary/60 sm:h-12 sm:px-7"
-            >
-              How it works
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <p className="text-[0.65rem] uppercase tracking-[0.3em] text-primary">01 / Play</p>
+            <h1 className="mt-3 font-display text-[3rem] leading-[0.9] tracking-[-0.02em] text-foreground sm:text-7xl xl:text-8xl">
+              Drop in.
+              <br />
+              <span className="text-muted-foreground/70">Clutch up.</span>
+            </h1>
+            <p className="mx-auto mt-4 max-w-xs text-sm leading-6 text-muted-foreground lg:ml-auto lg:mr-0">
+              Daily BGMI and Free Fire rooms. Real squads, real prize pools.
+            </p>
           </motion.div>
-          <p className="mt-3 text-xs text-muted-foreground">Free · Android 7.0+ · {publicRelease.sizeLabel}</p>
-        </motion.div>
 
-        {/* Device stage */}
-        <div className="relative mx-auto mt-12 max-w-5xl sm:mt-16" style={{ perspective: "1200px" }}>
-          <div className="relative flex items-end justify-center gap-4 sm:gap-8">
-            <motion.div className="hidden w-48 md:block lg:w-56" style={{ y: p(sideY) }}>
-              <IPhoneMockup src={appScreens[1].src} alt={appScreens[1].alt} className="opacity-60 -rotate-6" />
-            </motion.div>
+          <div className="relative mx-auto w-56 sm:w-64 lg:w-72" style={{ perspective: "1200px" }}>
+            <div className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[160%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[90px]" />
             <motion.div
-              className="w-56 sm:w-72"
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease, delay: 0.4 }}
+              transition={{ duration: 1, ease, delay: 0.3 }}
               style={reduce ? undefined : { rotateX, y: phoneY, transformStyle: "preserve-3d" }}
             >
               <IPhoneMockup src={appScreens[0].src} alt={appScreens[0].alt} priority />
             </motion.div>
-            <motion.div className="hidden w-48 md:block lg:w-56" style={{ y: p(sideY) }}>
-              <IPhoneMockup src={appScreens[5].src} alt={appScreens[5].alt} className="opacity-60 rotate-6" />
+            <motion.div style={{ y: p(chipA) }} className="pointer-events-none absolute -left-10 top-[18%] sm:-left-24">
+              <HudCard icon={<Zap className="h-4 w-4 text-primary" />} title="₹500 sent via UPI" meta="42s ago" />
             </motion.div>
-          </div>
-
-          {/* Podium line */}
-          <div className="pointer-events-none absolute inset-x-[10%] bottom-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
-          <div className="pointer-events-none absolute left-1/2 bottom-0 h-16 w-2/3 -translate-x-1/2 bg-primary/20 blur-3xl" />
-
-          {/* Parallax HUD cards */}
-          <div className="pointer-events-none absolute inset-0">
-            <motion.div style={{ y: p(chipA) }} className="absolute left-0 top-[14%] sm:left-[4%]">
-              <HudCard icon={<Zap className="h-4 w-4 text-primary" />} title="₹500 sent via UPI" meta="Paid out · 42s ago" />
+            <motion.div style={{ y: p(chipB) }} className="pointer-events-none absolute -right-8 bottom-[22%] sm:-right-24">
+              <HudCard icon={<ShieldCheck className="h-4 w-4 text-primary" />} title="Result verified" meta="Room ID checked" />
             </motion.div>
-            <motion.div style={{ y: p(chipB) }} className="absolute right-0 top-[38%] sm:right-[4%]">
-              <HudCard icon={<ShieldCheck className="h-4 w-4 text-primary" />} title="Result verified" meta="Screenshot + room ID" />
-            </motion.div>
-            <motion.div style={{ y: p(chipC) }} className="absolute left-[2%] bottom-[18%] hidden sm:block sm:left-[10%]">
+            <motion.div style={{ y: p(chipC) }} className="pointer-events-none absolute -right-28 top-[4%] hidden xl:block">
               <HudCard icon={<Trophy className="h-4 w-4 text-primary" />} title="Squad lobby 92/100" meta="Starts in 08:14" />
             </motion.div>
           </div>
+
+          <motion.div
+            style={{ y: p(sideY) }}
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease, delay: 0.2 }}
+            className="text-center lg:text-left"
+          >
+            <p className="text-[0.65rem] uppercase tracking-[0.3em] text-primary">02 / Win</p>
+            <p className="mt-3 font-display text-[3rem] leading-[0.9] tracking-[-0.02em] text-foreground sm:text-7xl xl:text-8xl" aria-hidden="true">
+              Get paid<span className="text-primary">.</span>
+            </p>
+            <p className="mx-auto mt-4 max-w-xs text-sm leading-6 text-muted-foreground lg:mx-0">
+              Skill-based cash prizes straight to UPI. Free on Android 7.0+, {publicRelease.sizeLabel}.
+            </p>
+            <div className="mt-6 flex flex-row items-center justify-center gap-2.5 lg:justify-start">
+              <AnimatedButton variant="hero" className="h-11 rounded-full px-5 text-sm sm:h-12 sm:px-7" onClick={handleDownload}>
+                <Download className="h-4 w-4" /> Download APK
+              </AnimatedButton>
+              <a
+                href="#how-it-works"
+                className="group inline-flex h-11 items-center gap-1.5 rounded-full border border-border bg-background/40 px-5 text-sm font-medium text-foreground backdrop-blur transition-colors hover:border-primary/60 sm:h-12"
+              >
+                How it works
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+          </motion.div>
         </div>
+
 
         {/* Stats dock — static values so crawlers read real numbers */}
         <dl className="relative mx-auto mt-8 grid max-w-4xl grid-cols-2 overflow-hidden rounded-2xl border border-border bg-background/80 backdrop-blur-md sm:grid-cols-4">
