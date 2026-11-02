@@ -28,25 +28,41 @@ async function aiGender(name: string): Promise<Gender> {
   const key = process.env.LOVABLE_API_KEY;
   if (!key) return guessGenderFromName(name);
   try {
-    const res = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    const res = await fetch("https://ai.gateway.lovable.dev/v1/responses", {
       method: "POST",
-      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      signal: AbortSignal.timeout(6000),
+      headers: { "Lovable-API-Key": key, "Content-Type": "application/json", "X-Lovable-AIG-SDK": "fetch" },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash-lite",
-        messages: [
-          {
-            role: "system",
-            content:
-              "You read a Free Fire gamer tag (may use fancy unicode letters) and guess whether the player is more likely female or male. Reply with exactly one word: female or male.",
-          },
-          { role: "user", content: name },
-        ],
+        model: "openai/gpt-6-astra",
+        stream: true,
+        store: false,
+        reasoning: { effort: "low" },
+        instructions:
+          "You read a Free Fire gamer tag (may use fancy unicode letters) and guess whether the player is more likely female or male. Reply with exactly one word: female or male.",
+        input: name,
       }),
     });
-    if (!res.ok) return guessGenderFromName(name);
-    const j: any = await res.json();
-    const out = String(j?.choices?.[0]?.message?.content ?? "").toLowerCase();
+    if (!res.ok || !res.body) return guessGenderFromName(name);
+    const reader = res.body.getReader();
+    const dec = new TextDecoder();
+    let buf = "";
+    let out = "";
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split("\n");
+      buf = lines.pop() ?? "";
+      for (const l of lines) {
+        if (!l.startsWith("data:")) continue;
+        try {
+          const ev = JSON.parse(l.slice(5).trim());
+          if (ev.type === "response.output_text.delta") out += ev.delta ?? "";
+        } catch {
+          /* ignore */
+        }
+      }
+    }
+    out = out.toLowerCase();
     return out.includes("female") ? "female" : out.includes("male") ? "male" : guessGenderFromName(name);
   } catch {
     return guessGenderFromName(name);
