@@ -1,36 +1,41 @@
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import ProfileCard from "@/components/reactbits/ProfileCard";
-import { lookupFfPlayer, type FfPlayerResult } from "@/lib/ffPlayer.functions";
-import sprinter from "@/assets/fighters/sprinter.jpg";
-import hacker from "@/assets/fighters/hacker.jpg";
-import samurai from "@/assets/fighters/samurai.jpg";
-import samuraiAwakened from "@/assets/fighters/samurai-awakened.jpg";
+import { lookupFfPlayer, type FfPlayerResult, type Gender } from "@/lib/ffPlayer.functions";
+import hayato from "@/assets/ff/hayato.png.asset.json";
+import hayatoAw from "@/assets/ff/hayato-awakened.webp.asset.json";
+import kelly from "@/assets/ff/kelly.png.asset.json";
+import kellyAw from "@/assets/ff/kelly-awakened.webp.asset.json";
+import moco from "@/assets/ff/moco.png.asset.json";
+import mocoAw from "@/assets/ff/moco-awakened.webp.asset.json";
 
-type Gender = "male" | "female";
-
-// Female rotates sprinter -> hacker; male rotates samurai -> awakened samurai.
+// Female rotates Kelly / Moco (normal + awakened); male rotates Hayato / Awakened Hayato.
 export const CHARACTER_ROTATION: Record<Gender, { src: string; label: string }[]> = {
   female: [
-    { src: sprinter, label: "Sprinter" },
-    { src: hacker, label: "Hacker" },
+    { src: kelly.url, label: "Kelly" },
+    { src: mocoAw.url, label: "Awakened Moco" },
+    { src: kellyAw.url, label: "Awakened Kelly" },
+    { src: moco.url, label: "Moco" },
   ],
   male: [
-    { src: samurai, label: "Blade" },
-    { src: samuraiAwakened, label: "Blade Awakened" },
+    { src: hayato.url, label: "Hayato" },
+    { src: hayatoAw.url, label: "Awakened Hayato" },
   ],
 };
 
 export default function PlayerCardSection() {
   const lookup = useServerFn(lookupFfPlayer);
   const [uid, setUid] = useState("");
-  const [gender, setGender] = useState<Gender>("male");
+  const [name, setName] = useState("");
+  const [askName, setAskName] = useState(false);
   const [idx, setIdx] = useState(0);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<FfPlayerResult | null>(null);
 
+  const found = result?.ok ? result : null;
+  const gender: Gender = found?.gender ?? (idx % 2 ? "female" : "male");
   const chars = CHARACTER_ROTATION[gender];
-  const char = chars[idx % chars.length];
+  const char = chars[(found ? idx : Math.floor(idx / 2)) % chars.length];
 
   useEffect(() => {
     const t = setInterval(() => setIdx((i) => i + 1), 4000);
@@ -46,15 +51,16 @@ export default function PlayerCardSection() {
     setLoading(true);
     setResult(null);
     try {
-      setResult(await lookup({ data: { uid } }));
+      const r = await lookup({ data: { uid, name: askName ? name : undefined } });
+      setResult(r);
+      if (!r.ok && r.needsName) setAskName(true);
+      if (r.ok) setIdx(0);
     } catch {
       setResult({ ok: false, error: "Lookup failed. Try again." });
     } finally {
       setLoading(false);
     }
   };
-
-  const found = result?.ok ? result : null;
 
   return (
     <section id="player-card" className="relative py-20 md:py-28">
@@ -63,7 +69,7 @@ export default function PlayerCardSection() {
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-primary">Player card</p>
           <h2 className="font-display text-4xl font-bold text-foreground md:text-5xl">Drop your UID. Get your card.</h2>
           <p className="mt-4 max-w-md text-muted-foreground">
-            Enter your Free Fire UID and we pull your in-game name from the IND servers. Flex the card with your squad.
+            Enter your Free Fire UID. We grab your in-game name and pick your squad character from your tag. Flex it with the squad.
           </p>
 
           <form onSubmit={submit} className="mt-8 space-y-4">
@@ -76,35 +82,37 @@ export default function PlayerCardSection() {
                 value={uid}
                 onChange={(e) => setUid(e.target.value.replace(/\D/g, ""))}
                 placeholder="e.g. 1234567890"
-                className="h-12 flex-1 rounded-xl border border-border bg-card px-4 text-foreground outline-none focus:border-primary"
+                className="h-12 min-w-0 flex-1 rounded-xl border border-border bg-card px-4 text-foreground outline-none focus:border-primary"
               />
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || (askName && !name.trim())}
                 className="h-12 rounded-xl bg-primary px-6 font-semibold text-primary-foreground transition active:scale-95 disabled:opacity-60"
               >
-                {loading ? "Scanning…" : "Find"}
+                {loading ? "Scanning…" : askName ? "Build" : "Find"}
               </button>
             </div>
 
-            <div role="radiogroup" aria-label="Card character" className="flex gap-2">
-              {(["male", "female"] as Gender[]).map((g) => (
-                <button
-                  key={g}
-                  type="button"
-                  role="radio"
-                  aria-checked={gender === g}
-                  onClick={() => { setGender(g); setIdx(0); }}
-                  className={`rounded-full border px-4 py-1.5 text-sm transition ${
-                    gender === g ? "border-primary bg-primary/15 text-foreground" : "border-border text-muted-foreground"
-                  }`}
-                >
-                  {g === "male" ? "Male character" : "Female character"}
-                </button>
-              ))}
-            </div>
+            {askName && (
+              <div className="space-y-2">
+                <label htmlFor="ff-name" className="text-sm font-medium text-foreground">In-game name</label>
+                <input
+                  id="ff-name"
+                  maxLength={40}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your IGN"
+                  className="h-12 w-full rounded-xl border border-border bg-card px-4 text-foreground outline-none focus:border-primary"
+                />
+              </div>
+            )}
 
-            {result && !result.ok && <p role="alert" className="text-sm text-destructive">{result.error}</p>}
+            {result && !result.ok && <p role="alert" className="text-sm text-muted-foreground">{result.error}</p>}
+            {found && (
+              <p className="text-sm text-muted-foreground">
+                Squad pick: <span className="text-foreground">{gender === "female" ? "Kelly & Moco" : "Hayato"}</span>, read from your tag.
+              </p>
+            )}
           </form>
         </div>
 
@@ -112,9 +120,9 @@ export default function PlayerCardSection() {
           <ProfileCard
             avatarUrl={char.src}
             name={found?.nickname ?? "Your IGN"}
-            title={found ? `Level ${found.level ?? "—"} · ${found.region ?? "IND"}` : `${char.label} · VeloRix`}
+            title={found ? `${found.level ? `Level ${found.level} · ` : ""}${found.region ?? "IND"}` : `${char.label} · VeloRix`}
             handle={found ? `UID ${found.uid}` : "UID ••••••••"}
-            status={found ? "Eligible for cash scrims" : "Waiting for UID"}
+            status={found ? char.label : "Waiting for UID"}
             statusColor={found ? "#22c55e" : "#e11d48"}
             contactText={found ? "Join a room" : undefined}
             onContactClick={() => { window.location.href = "/download"; }}
