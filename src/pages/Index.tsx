@@ -15,6 +15,7 @@ import BackToTop from "@/components/BackToTop";
 import Reveal from "@/components/Reveal";
 import PlayerVoices from "@/components/PlayerVoices";
 import FrameParallax from "@/components/FrameParallax";
+import PlayerCardSection from "@/components/PlayerCardSection";
 
 const Index = () => {
   useExternalLinkSound();
@@ -35,6 +36,7 @@ const Index = () => {
         <Reveal><FeaturesSection /></Reveal>
         <Reveal><AppGallerySection /></Reveal>
         <FrameParallax />
+        <PlayerCardSection />
         <Reveal><HowItWorksSection /></Reveal>
         <Reveal><SocialProofBadges /></Reveal>
         <Reveal><PlayerVoices /></Reveal>
