@@ -53,8 +53,8 @@ const FrameParallax = () => {
   const beat = [...beats].reverse().find((b) => progress >= b.at) ?? beats[0];
 
   return (
-    <section ref={trackRef} aria-labelledby="frames-heading" className="relative h-[300vh]">
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-background">
+    <section ref={trackRef} aria-labelledby="frames-heading" className="relative h-[200svh] md:h-[300vh]">
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-background">
         {frames.map((src, i) => (
           <img
             key={src}

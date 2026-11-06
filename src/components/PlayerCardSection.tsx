@@ -63,7 +63,7 @@ export default function PlayerCardSection() {
   };
 
   return (
-    <section id="player-card" className="relative py-20 md:py-28">
+    <section id="player-card" className="relative pt-12 pb-20 md:py-28">
       <div className="container mx-auto grid items-center gap-12 px-4 md:grid-cols-2">
         <div>
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-primary">Player card</p>
