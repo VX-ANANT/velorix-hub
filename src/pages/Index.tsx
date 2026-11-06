@@ -21,7 +21,7 @@ const Index = () => {
   useExternalLinkSound();
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden relative">
+    <div className="min-h-screen bg-background overflow-x-clip relative">
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
