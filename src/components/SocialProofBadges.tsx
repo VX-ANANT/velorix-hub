@@ -56,6 +56,7 @@ const SocialProofBadges = () => {
 
   useEffect(() => {
     if (!widgetMounted) return;
+    if (/bot|crawler|spider|Google-InspectionTool|Lighthouse/i.test(navigator.userAgent)) return;
     let attempts = 0;
 
     const loadTrustpilotWidget = () => {

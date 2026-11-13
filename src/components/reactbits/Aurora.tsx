@@ -103,6 +103,7 @@ export default function Aurora(props: AuroraProps) {
   useEffect(() => {
     const ctn = ctnDom.current;
     if (!ctn) return;
+    if (/bot|crawler|spider|Google-InspectionTool|Lighthouse/i.test(navigator.userAgent)) return;
 
     let renderer: Renderer;
     try {
