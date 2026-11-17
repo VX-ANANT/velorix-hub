@@ -1,6 +1,16 @@
 // Single source for visible FAQ copy and FAQPage JSON-LD — keep them identical.
 export const faqs = [
   {
+    question: "Which is the best Free Fire tournament app in India?",
+    answer:
+      "VeloRix is a free Android app for daily Free Fire and BGMI tournaments in India. You get custom room matches, room ID and password inside the app, verified results and skill-based prizes sent to UPI.",
+  },
+  {
+    question: "How do I get the custom room ID and password?",
+    answer:
+      "After you register for a match, the room ID and password show up in the VeloRix app shortly before start time, and you get a notification so you can join on time.",
+  },
+  {
     question: "What is VeloRix Tournaments?",
     answer:
       "VeloRix Tournaments is a BGMI and Free Fire tournament app for India that runs daily skill-based custom-room matches with cash prizes paid via UPI. It's free on Android 7.0+ and made for players aged 18 and above.",

@@ -85,6 +85,7 @@ const HeroSection = () => {
           >
             <p className="text-[0.65rem] uppercase tracking-[0.3em] text-primary">01 / Play</p>
             <h1 className="mt-3 font-display text-[3rem] leading-[0.9] tracking-[-0.02em] text-foreground sm:text-7xl xl:text-8xl">
+              <span className="sr-only">VeloRix: Free Fire and BGMI tournament app for India. </span>
               Drop in.
               <br />
               <span className="text-muted-foreground/70">Clutch up.</span>
